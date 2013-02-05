@@ -16,5 +16,3 @@ C:\Users\bryan nafegar\Desktop\TICSET\TICSET\obj\x86\Debug\TICSET.Form1.resource
 C:\Users\bryan nafegar\Desktop\TICSET\TICSET\obj\x86\Debug\TICSET.Properties.Resources.resources
 C:\Users\bryan nafegar\Desktop\TICSET\TICSET\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\bryan nafegar\Desktop\TICSET\TICSET\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\bryan nafegar\Documents\GitHub\abjmpusofteng\SoftwareEngProject\TICSET\obj\x86\Debug\TICSET.exe
-C:\Users\bryan nafegar\Documents\GitHub\abjmpusofteng\SoftwareEngProject\TICSET\obj\x86\Debug\TICSET.pdb
