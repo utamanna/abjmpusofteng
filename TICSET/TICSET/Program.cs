@@ -16,11 +16,13 @@ namespace TICSET
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
 
 
 
     }
+     
     static class Board
     {
         /*
@@ -49,6 +51,10 @@ namespace TICSET
         public char[] getBoard()
         {
             return board;
+        }
+        public char getPieceAtPosition(int pos)
+        {
+            return board[pos];
         }
 
     }
