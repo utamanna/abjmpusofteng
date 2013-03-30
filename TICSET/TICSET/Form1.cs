@@ -2,6 +2,7 @@
 //int streak weight
 
 using System;
+using AI;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using gamePlay;
 
 namespace TICSET
 {
@@ -23,6 +25,12 @@ namespace TICSET
         private Button[] ButtonArray;
         private bool isX;
         private bool isGameOver;
+
+        HumanPlayer p1;
+        computerPlayer p2;
+
+        Game currentGame;
+
         private int[,] winPattern ={
             {0,1,2,3},
             {1,2,3,4},
@@ -57,13 +65,16 @@ namespace TICSET
         {
             ButtonArray = new Button[25]{Button1,button2, button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,button20
         ,button21,button22,button23,button24,button25};
+            
+
             foreach (Button ctrlBtn in ButtonArray)
             {
-                ctrlBtn.Click += new System.EventHandler(this.DrawCharacter);
+                ctrlBtn.Click += new System.EventHandler(this.makeMove);
             }
-            InitGame();
+            visualBoard vb = new visualBoard(ButtonArray);
+            InitGame(vb);
         }
-        private void InitGame()
+        private void InitGame(visualBoard vb)
         {
             foreach (Button btn in ButtonArray)
             {
@@ -73,6 +84,16 @@ namespace TICSET
             }
             isGameOver = false;
             isX = true;
+            
+            HumanPlayer p1 = new HumanPlayer("Joe", 'X');
+            computerPlayer p2 = new computerPlayer('O');
+
+            currentGame = new Game(p1, p2, vb);
+
+
+            //Assume Computer is always O's.
+            
+
         }
         public Form1()
         {
@@ -140,23 +161,32 @@ namespace TICSET
             }
             return gameOver;
         }
-
-         private void DrawCharacter(object sender, EventArgs e)
+         private void makeMove(object sender, EventArgs e)
          {
              Button tmp = (Button)sender;
+             string name = tmp.Name;
+             name = name.Remove(0, 6); //remove "button" from name. example: button8 becomes 8
+             int position = Convert.ToInt32(name);
+             DrawCharacter(tmp);
+         }
+         private void DrawCharacter(Button buttonObj)
+         {
+             
+             string name = buttonObj.Name;
+             
 
              if (this.isGameOver)
              {
                  MessageBox.Show("Game Over");
              }
 
-             if (tmp.Text != "")
+             if (buttonObj.Text != "")
              {
                  MessageBox.Show("Move not allowed", "Incorrect Move");
              }
              else
              {
-                 tmp.Text = (isX) ? "X" : "O";
+                 buttonObj.Text = (isX) ? "X" : "O";
                  isX = !isX;
              }
              this.isGameOver = IsGameOver(ButtonArray) || CheckDraw(ButtonArray);
@@ -180,6 +210,7 @@ namespace TICSET
         {
             OnePlayerbutton.Enabled = false;
             label_1.Text = " There will be one player, Player 1 is X and the computer is O";
+            p2 = new computerPlayer('O');
             TwoPlayerButton.Enabled = false;
             Button1.Enabled = true;
             button2.Enabled = true;

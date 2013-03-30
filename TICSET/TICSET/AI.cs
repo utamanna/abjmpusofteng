@@ -1,6 +1,7 @@
 ﻿
 using System;
 using TICSET;
+using gamePlay;
 using System.Windows.Forms;
 //make a variable for an array for winning combinations
 
@@ -26,7 +27,7 @@ namespace AI
         {
             return positions;
         }
-        public int getScore(Board board, char gamePiece, int weight) {
+        public int getScore(virtualBoard board, char gamePiece, int weight) {
             /* checks current combo to see what score it has
              * score is equal to the number of times gamePiece shows up in the combo, multiplied by weight,
              * UNLESS the other piece shows up.
@@ -54,7 +55,7 @@ namespace AI
         private winningCombo[] combos = new winningCombo[28];
         private void buildList()
         {
-            /* Board Layout:
+            /* virtualBoard Layout:
              * 0   1   2   3   4
              * 5   6   7   8   9
              * 10  11  12  13  14
@@ -120,37 +121,50 @@ namespace AI
 
         }
     }
-    class computerPlayer
+    class computerPlayer  :   Player
     {
         /*
          * This class allows us to call "new computerPlayer("X")" when a 1player game is started. 
         */
-        char computersGamePiece; //Set to X or O
-
-        int[] calculateDefensiveMoves(Board currentBoard) {
+        //private char computersGamePiece; //Set to X or O
+        private string id;
+        private char GamePiece;
+        private bool isHuman;
+        private winningComboList WCL;
+        public computerPlayer(char piece) :base("AI", piece, false)
+        {
+            this.id = "AI";
+            this.isHuman = false;
             winningComboList WCL = new winningComboList();                      //Build the Winning Combo List
+        }
+        int[] calculateDefensiveMoves(virtualBoard currentBoard) {
+            
             char humansGamePiece=' ';                                           //In Defensive check, we need to check against the other player's piece
-            if (computersGamePiece == 'X') humansGamePiece = 'O';
-            else if (computersGamePiece == 'O') humansGamePiece = 'X';
-            else MessageBox.Show("Piece Error in winningCombo.getScore; using piece: " + computersGamePiece);  //used if piece is neither X or O
+            if (GamePiece == 'X') humansGamePiece = 'O';
+            else if (GamePiece == 'O') humansGamePiece = 'X';
+            else MessageBox.Show("Piece Error in winningCombo.getScore; using piece: " + GamePiece);  //used if piece is neither X or O
             int[] results = new int[25];
             for (int x = 0; x < 25; x++) results[x] = 0; // set result set to 0
 
             for (int pos = 0; pos < 25; pos++)                                  //loop through each position
             {
-                winningCombo[] WCs = WCL.getCombosWithPosition(pos);            //Get all the combos that intersect that position
-                int score = 0;
-                foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
+                if (currentBoard.getPieceAtPosition(pos) == 'N') //Only loop check it if the spot it empty.
                 {
-                    score += WC.getScore(currentBoard, humansGamePiece, 5);  //add the score
-                    //TODO: Change 5 to be the correct weight
+
+                    winningCombo[] WCs = WCL.getCombosWithPosition(pos);            //Get all the combos that intersect that position
+                    int score = 0;
+                    foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
+                    {
+                        score += WC.getScore(currentBoard, humansGamePiece, 5);  //add the score
+                        //TODO: Change 5 to be the correct weight
+                    }
+                    results[pos] = score;                                           //set the score at that position
                 }
-                results[pos] = score;                                           //set the score at that position
             }
 
             return results;
         }
-        int[] calculateOffensiveMoves(Board currentBoard)
+        int[] calculateOffensiveMoves(virtualBoard currentBoard)
         {
             winningComboList WCL = new winningComboList();                      //Build the Winning Combo List
             int[] results = new int[25];
@@ -162,7 +176,7 @@ namespace AI
                 int score = 0;
                 foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
                 {
-                    score += WC.getScore(currentBoard, computersGamePiece, 5);  //add the score
+                    score += WC.getScore(currentBoard, GamePiece, 5);  //add the score
                     //TODO: Change 5 to be the correct weight
                 }
                 results[pos] = score;                                           //set the score at that position
@@ -172,7 +186,7 @@ namespace AI
 
         }
 
-        public void startTurn(Board GameBoard)
+        public void startTurn(virtualBoard GameBoard)
         {
             //call this function at the start of every computer turn. This will kick off the AI and commit a move.
             int[] DefensiveMoves =new int[25];   
@@ -195,8 +209,10 @@ namespace AI
                 }
             }
 
-            GameBoard.commitMove(computersGamePiece, bestMoveIndex);                    //When we have the best move, commit it
+            GameBoard.commitMove(this, bestMoveIndex);                    //When we have the best move, commit it
 
         }
+
+        
     }
 }
