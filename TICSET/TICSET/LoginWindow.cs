@@ -6,14 +6,21 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
+using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace TICSET
 {
     public partial class LoginWindow : Form
     {
-        // Varaible for the registration window form.
-        private RegisterWindow registrationWindow;
+        // Variables
+        string player_one;
+
+
+        // SQL connection
+        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
+        private SqlCeConnection connection;
 
         public LoginWindow()
         {
@@ -22,50 +29,77 @@ namespace TICSET
 
         private void lbl_new_user_Click(object sender, EventArgs e)
         {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
             this.Visible = false;
-            registrationWindow = new RegisterWindow();
-            registrationWindow.Show();
+            registrationWindow.ShowDialog();
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tb_username.Text))
+            bool isUsernameFull = false, isPasswordFull = false;
+            // Validate that username is not empty
+            if (!(string.IsNullOrEmpty(tb_username.Text)))
             {
-                errorProvider1.SetError(tb_username, "Please provide a username.");
+                errorProvider1.Clear();
+                isUsernameFull = true;
+            }
+            else
+            {
+                errorProvider1.SetError(tb_username, " Please provide a username.");
             }
 
-            //if (this.ValidateChildren(ValidationConstraints.Enabled))
-            //{
-                
-            //}
-            //else
-            //{
+            // Validate that password is not empty
+            if (!(string.IsNullOrEmpty(tb_password.Text)))
+            {
+                errorProvider2.Clear();
+                isPasswordFull = true;
+            }
+            else
+            {
+                errorProvider2.SetError(tb_password, " Please provide a username.");
+            }
 
-            //}
+            if( isUsernameFull && isPasswordFull )
+            {
+                // When the user name and password is filled in,
+                // connect to the database and check the username
+                // and password agaisnt the database. If a match is
+                // found get the first name and last name and concatenate 
+                // it and show the GameSettings form.
+                try
+                {
+                    connection = new SqlCeConnection(connectionString);
+                    connection.Open();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString());
+                }
+                SqlCeCommand sc = new SqlCeCommand("SELECT * FROM [user] WHERE username='" +
+                                                   tb_username.Text + "' AND password='" +
+                                                   tb_password.Text + "'", connection);
+                SqlCeDataReader reader = null;
+                reader = sc.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    player_one = reader.GetString(2);
+                    player_one += " " + reader.GetString(3);
+                    this.Visible = false;
+                    GameSettings gameSettings = new GameSettings(player_one);
+                    gameSettings.ShowDialog();
+                    
+
+                }
+                connection.Close();
+            }
+
+
         }
 
-        private void tb_username_Validating(Object sender, CancelEventArgs e)
+        private void checkLogin(string user_name, string user_password)
         {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.tb_username.Text))
-            {
-                // Fails validation, display error message
-                cancel = true;
-                this.errorProvider1.SetError(tb_username, "Please provide a username");
-            }
-            e.Cancel = cancel;
-        }
-
-        private void tb_password_Validating(Object sender, CancelEventArgs e)
-        {
-            bool cancel = false;
-            if (string.IsNullOrEmpty(this.tb_password.Text))
-            {
-                // Fails validation, display error message
-                cancel = true;
-                this.errorProvider1.SetError(tb_password, "Please provide a username");
-            }
-            e.Cancel = cancel;
+            
         }
     }
 }

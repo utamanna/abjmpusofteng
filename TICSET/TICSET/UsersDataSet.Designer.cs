@@ -24,7 +24,7 @@ namespace TICSET {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class UsersDataSet : global::System.Data.DataSet {
         
-        private UserInfoDataTable tableUserInfo;
+        private userDataTable tableuser;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace TICSET {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["UserInfo"] != null)) {
-                    base.Tables.Add(new UserInfoDataTable(ds.Tables["UserInfo"]));
+                if ((ds.Tables["user"] != null)) {
+                    base.Tables.Add(new userDataTable(ds.Tables["user"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace TICSET {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public UserInfoDataTable UserInfo {
+        public userDataTable user {
             get {
-                return this.tableUserInfo;
+                return this.tableuser;
             }
         }
         
@@ -152,8 +152,8 @@ namespace TICSET {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["UserInfo"] != null)) {
-                    base.Tables.Add(new UserInfoDataTable(ds.Tables["UserInfo"]));
+                if ((ds.Tables["user"] != null)) {
+                    base.Tables.Add(new userDataTable(ds.Tables["user"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace TICSET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableUserInfo = ((UserInfoDataTable)(base.Tables["UserInfo"]));
+            this.tableuser = ((userDataTable)(base.Tables["user"]));
             if ((initTable == true)) {
-                if ((this.tableUserInfo != null)) {
-                    this.tableUserInfo.InitVars();
+                if ((this.tableuser != null)) {
+                    this.tableuser.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace TICSET {
             this.Namespace = "http://tempuri.org/UsersDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableUserInfo = new UserInfoDataTable();
-            base.Tables.Add(this.tableUserInfo);
+            this.tableuser = new userDataTable();
+            base.Tables.Add(this.tableuser);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeUserInfo() {
+        private bool ShouldSerializeuser() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace TICSET {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void UserInfoRowChangeEventHandler(object sender, UserInfoRowChangeEvent e);
+        public delegate void userRowChangeEventHandler(object sender, userRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class UserInfoDataTable : global::System.Data.TypedTableBase<UserInfoRow> {
+        public partial class userDataTable : global::System.Data.TypedTableBase<userRow> {
             
             private global::System.Data.DataColumn columnusername;
             
@@ -289,8 +289,8 @@ namespace TICSET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoDataTable() {
-                this.TableName = "UserInfo";
+            public userDataTable() {
+                this.TableName = "user";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +298,7 @@ namespace TICSET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal UserInfoDataTable(global::System.Data.DataTable table) {
+            internal userDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,7 +315,7 @@ namespace TICSET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected UserInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected userDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -363,55 +363,55 @@ namespace TICSET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRow this[int index] {
+            public userRow this[int index] {
                 get {
-                    return ((UserInfoRow)(this.Rows[index]));
+                    return ((userRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserInfoRowChangeEventHandler UserInfoRowChanging;
+            public event userRowChangeEventHandler userRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserInfoRowChangeEventHandler UserInfoRowChanged;
+            public event userRowChangeEventHandler userRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserInfoRowChangeEventHandler UserInfoRowDeleting;
+            public event userRowChangeEventHandler userRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserInfoRowChangeEventHandler UserInfoRowDeleted;
+            public event userRowChangeEventHandler userRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddUserInfoRow(UserInfoRow row) {
+            public void AdduserRow(userRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRow AddUserInfoRow(string username, string password, string first_name, string last_name) {
-                UserInfoRow rowUserInfoRow = ((UserInfoRow)(this.NewRow()));
+            public userRow AdduserRow(string username, string password, string first_name, string last_name) {
+                userRow rowuserRow = ((userRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         username,
                         password,
                         first_name,
                         last_name};
-                rowUserInfoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowUserInfoRow);
-                return rowUserInfoRow;
+                rowuserRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowuserRow);
+                return rowuserRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRow FindByusername(string username) {
-                return ((UserInfoRow)(this.Rows.Find(new object[] {
+            public userRow FindByusername(string username) {
+                return ((userRow)(this.Rows.Find(new object[] {
                             username})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                UserInfoDataTable cln = ((UserInfoDataTable)(base.Clone()));
+                userDataTable cln = ((userDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -419,7 +419,7 @@ namespace TICSET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new UserInfoDataTable();
+                return new userDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -457,28 +457,28 @@ namespace TICSET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRow NewUserInfoRow() {
-                return ((UserInfoRow)(this.NewRow()));
+            public userRow NewuserRow() {
+                return ((userRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new UserInfoRow(builder);
+                return new userRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(UserInfoRow);
+                return typeof(userRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.UserInfoRowChanged != null)) {
-                    this.UserInfoRowChanged(this, new UserInfoRowChangeEvent(((UserInfoRow)(e.Row)), e.Action));
+                if ((this.userRowChanged != null)) {
+                    this.userRowChanged(this, new userRowChangeEvent(((userRow)(e.Row)), e.Action));
                 }
             }
             
@@ -486,8 +486,8 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.UserInfoRowChanging != null)) {
-                    this.UserInfoRowChanging(this, new UserInfoRowChangeEvent(((UserInfoRow)(e.Row)), e.Action));
+                if ((this.userRowChanging != null)) {
+                    this.userRowChanging(this, new userRowChangeEvent(((userRow)(e.Row)), e.Action));
                 }
             }
             
@@ -495,8 +495,8 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.UserInfoRowDeleted != null)) {
-                    this.UserInfoRowDeleted(this, new UserInfoRowChangeEvent(((UserInfoRow)(e.Row)), e.Action));
+                if ((this.userRowDeleted != null)) {
+                    this.userRowDeleted(this, new userRowChangeEvent(((userRow)(e.Row)), e.Action));
                 }
             }
             
@@ -504,14 +504,14 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.UserInfoRowDeleting != null)) {
-                    this.UserInfoRowDeleting(this, new UserInfoRowChangeEvent(((UserInfoRow)(e.Row)), e.Action));
+                if ((this.userRowDeleting != null)) {
+                    this.userRowDeleting(this, new userRowChangeEvent(((userRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveUserInfoRow(UserInfoRow row) {
+            public void RemoveuserRow(userRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -538,7 +538,7 @@ namespace TICSET {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "UserInfoDataTable";
+                attribute2.FixedValue = "userDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -582,25 +582,25 @@ namespace TICSET {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class UserInfoRow : global::System.Data.DataRow {
+        public partial class userRow : global::System.Data.DataRow {
             
-            private UserInfoDataTable tableUserInfo;
+            private userDataTable tableuser;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal UserInfoRow(global::System.Data.DataRowBuilder rb) : 
+            internal userRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableUserInfo = ((UserInfoDataTable)(this.Table));
+                this.tableuser = ((userDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string username {
                 get {
-                    return ((string)(this[this.tableUserInfo.usernameColumn]));
+                    return ((string)(this[this.tableuser.usernameColumn]));
                 }
                 set {
-                    this[this.tableUserInfo.usernameColumn] = value;
+                    this[this.tableuser.usernameColumn] = value;
                 }
             }
             
@@ -608,10 +608,10 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string password {
                 get {
-                    return ((string)(this[this.tableUserInfo.passwordColumn]));
+                    return ((string)(this[this.tableuser.passwordColumn]));
                 }
                 set {
-                    this[this.tableUserInfo.passwordColumn] = value;
+                    this[this.tableuser.passwordColumn] = value;
                 }
             }
             
@@ -619,10 +619,10 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string first_name {
                 get {
-                    return ((string)(this[this.tableUserInfo.first_nameColumn]));
+                    return ((string)(this[this.tableuser.first_nameColumn]));
                 }
                 set {
-                    this[this.tableUserInfo.first_nameColumn] = value;
+                    this[this.tableuser.first_nameColumn] = value;
                 }
             }
             
@@ -630,10 +630,10 @@ namespace TICSET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string last_name {
                 get {
-                    return ((string)(this[this.tableUserInfo.last_nameColumn]));
+                    return ((string)(this[this.tableuser.last_nameColumn]));
                 }
                 set {
-                    this[this.tableUserInfo.last_nameColumn] = value;
+                    this[this.tableuser.last_nameColumn] = value;
                 }
             }
         }
@@ -642,22 +642,22 @@ namespace TICSET {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class UserInfoRowChangeEvent : global::System.EventArgs {
+        public class userRowChangeEvent : global::System.EventArgs {
             
-            private UserInfoRow eventRow;
+            private userRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRowChangeEvent(UserInfoRow row, global::System.Data.DataRowAction action) {
+            public userRowChangeEvent(userRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserInfoRow Row {
+            public userRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -685,7 +685,7 @@ namespace TICSET.UsersDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class UserInfoTableAdapter : global::System.ComponentModel.Component {
+    public partial class userTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlServerCe.SqlCeDataAdapter _adapter;
         
@@ -699,7 +699,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public UserInfoTableAdapter() {
+        public userTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -796,7 +796,7 @@ namespace TICSET.UsersDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlServerCe.SqlCeDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "UserInfo";
+            tableMapping.DataSetTable = "user";
             tableMapping.ColumnMappings.Add("username", "username");
             tableMapping.ColumnMappings.Add("password", "password");
             tableMapping.ColumnMappings.Add("first_name", "first_name");
@@ -804,13 +804,13 @@ namespace TICSET.UsersDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [UserInfo] WHERE (([username] = @p1))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [user] WHERE (([username] = @p1))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "username", global::System.Data.DataRowVersion.Original, null));
             this._adapter.InsertCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [UserInfo] ([username], [password], [first_name], [last_name]) VALUES" +
-                " (@p1, @p2, @p3, @p4)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [user] ([username], [password], [first_name], [last_name]) VALUES (@p" +
+                "1, @p2, @p3, @p4)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "username", global::System.Data.DataRowVersion.Current, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "password", global::System.Data.DataRowVersion.Current, null));
@@ -818,8 +818,8 @@ namespace TICSET.UsersDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p4", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "last_name", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [UserInfo] SET [username] = @p1, [password] = @p2, [first_name] = @p3, [la" +
-                "st_name] = @p4 WHERE (([username] = @p5))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [user] SET [username] = @p1, [password] = @p2, [first_name] = @p3, [last_n" +
+                "ame] = @p4 WHERE (([username] = @p5))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p1", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "username", global::System.Data.DataRowVersion.Current, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlServerCe.SqlCeParameter("@p2", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, true, 0, 0, "password", global::System.Data.DataRowVersion.Current, null));
@@ -841,7 +841,7 @@ namespace TICSET.UsersDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlServerCe.SqlCeCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlServerCe.SqlCeCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [username], [password], [first_name], [last_name] FROM [UserInfo]";
+            this._commandCollection[0].CommandText = "SELECT [username], [password], [first_name], [last_name] FROM [user]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -849,7 +849,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(UsersDataSet.UserInfoDataTable dataTable) {
+        public virtual int Fill(UsersDataSet.userDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -862,9 +862,9 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual UsersDataSet.UserInfoDataTable GetData() {
+        public virtual UsersDataSet.userDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            UsersDataSet.UserInfoDataTable dataTable = new UsersDataSet.UserInfoDataTable();
+            UsersDataSet.userDataTable dataTable = new UsersDataSet.userDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -872,7 +872,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(UsersDataSet.UserInfoDataTable dataTable) {
+        public virtual int Update(UsersDataSet.userDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -880,7 +880,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(UsersDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "UserInfo");
+            return this.Adapter.Update(dataSet, "user");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1042,7 +1042,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private UserInfoTableAdapter _userInfoTableAdapter;
+        private userTableAdapter _userTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1064,12 +1064,12 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public UserInfoTableAdapter UserInfoTableAdapter {
+        public userTableAdapter userTableAdapter {
             get {
-                return this._userInfoTableAdapter;
+                return this._userTableAdapter;
             }
             set {
-                this._userInfoTableAdapter = value;
+                this._userTableAdapter = value;
             }
         }
         
@@ -1092,9 +1092,9 @@ namespace TICSET.UsersDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._userInfoTableAdapter != null) 
-                            && (this._userInfoTableAdapter.Connection != null))) {
-                    return this._userInfoTableAdapter.Connection;
+                if (((this._userTableAdapter != null) 
+                            && (this._userTableAdapter.Connection != null))) {
+                    return this._userTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1109,7 +1109,7 @@ namespace TICSET.UsersDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._userInfoTableAdapter != null)) {
+                if ((this._userTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1123,12 +1123,12 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(UsersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._userInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UserInfo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._userTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.user.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._userInfoTableAdapter.Update(updatedRows));
+                    result = (result + this._userTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1142,11 +1142,11 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(UsersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._userInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UserInfo.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._userTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.user.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._userInfoTableAdapter.Update(addedRows));
+                    result = (result + this._userTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1160,11 +1160,11 @@ namespace TICSET.UsersDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(UsersDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._userInfoTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UserInfo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._userTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.user.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._userInfoTableAdapter.Update(deletedRows));
+                    result = (result + this._userTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1207,8 +1207,8 @@ namespace TICSET.UsersDataSetTableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._userInfoTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._userInfoTableAdapter.Connection) == false))) {
+            if (((this._userTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._userTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1244,13 +1244,13 @@ namespace TICSET.UsersDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._userInfoTableAdapter != null)) {
-                    revertConnections.Add(this._userInfoTableAdapter, this._userInfoTableAdapter.Connection);
-                    this._userInfoTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
-                    this._userInfoTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
-                    if (this._userInfoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._userInfoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._userInfoTableAdapter.Adapter);
+                if ((this._userTableAdapter != null)) {
+                    revertConnections.Add(this._userTableAdapter, this._userTableAdapter.Connection);
+                    this._userTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(workConnection));
+                    this._userTableAdapter.Transaction = ((global::System.Data.SqlServerCe.SqlCeTransaction)(workTransaction));
+                    if (this._userTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._userTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._userTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1311,9 +1311,9 @@ namespace TICSET.UsersDataSetTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._userInfoTableAdapter != null)) {
-                    this._userInfoTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._userInfoTableAdapter]));
-                    this._userInfoTableAdapter.Transaction = null;
+                if ((this._userTableAdapter != null)) {
+                    this._userTableAdapter.Connection = ((global::System.Data.SqlServerCe.SqlCeConnection)(revertConnections[this._userTableAdapter]));
+                    this._userTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
