@@ -147,6 +147,11 @@ namespace gamePlay
 
         }
     }
+    class GameSettings
+    {
+        Player p1;
+        Player p2;
+    }
     class Game
     {
         private virtualBoard GameBoard;
