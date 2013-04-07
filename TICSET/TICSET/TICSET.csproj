@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>4873D360BCEDFF5AFD06E537A2B7EBEFFE76DBBB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BC20B3B77DBEC1662165B9548B03D828D43EF406</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TICSET_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>TICSET_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -107,10 +107,10 @@
     <Compile Include="RegistrationWindow.Designer.cs">
       <DependentUpon>RegistrationWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsersDataSet.Designer.cs">
+    <Compile Include="UsersDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsersDataSet.xsd</DependentUpon>
+      <DependentUpon>UsersDataSet1.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -145,17 +145,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TICSET_1_TemporaryKey.pfx" />
     <None Include="TICSET_TemporaryKey.pfx" />
     <None Include="UsersDataSet.xsc">
       <DependentUpon>UsersDataSet.xsd</DependentUpon>
     </None>
     <None Include="UsersDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UsersDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="UsersDataSet.xss">
       <DependentUpon>UsersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UsersDataSet1.xsc">
+      <DependentUpon>UsersDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UsersDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UsersDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UsersDataSet1.xss">
+      <DependentUpon>UsersDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
