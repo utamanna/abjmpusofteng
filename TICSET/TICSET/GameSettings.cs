@@ -21,5 +21,12 @@ namespace TICSET
             InitializeComponent();
             lbl_player_one.Text = player_one;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 game = new Form1();
+            this.Visible = false;
+            game.Show();
+        }
     }
 }

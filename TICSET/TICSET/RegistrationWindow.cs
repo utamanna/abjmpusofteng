@@ -84,7 +84,7 @@ namespace TICSET
                 // Add the user to the database
                 try
                 {
-                    string connectionString = @"Data Source=C:\Users\JKANTER\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
+                    string connectionString = @"Data Source=C:\Users\bryan nafegar\Desktop\Users.sdf";
                     using (SqlCeConnection connection = new SqlCeConnection(connectionString))
                     using (SqlCeCommand command = new SqlCeCommand("INSERT INTO [user] (username, password, first_name, last_name) VALUES (@username, @password, @first_name, @last_name)", connection))
                     {
@@ -117,6 +117,11 @@ namespace TICSET
             LoginWindow loginWindow = new LoginWindow();
             this.Visible = false;
             loginWindow.ShowDialog();
+        }
+
+        private void RegistrationWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
