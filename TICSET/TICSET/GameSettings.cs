@@ -27,6 +27,7 @@ namespace TICSET
             Form1 game = new Form1();
             this.Visible = false;
             game.Show();
+            
         }
     }
 }

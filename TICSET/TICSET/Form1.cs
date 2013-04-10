@@ -166,7 +166,15 @@ namespace TICSET
 
         private void button28_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+           // this.Close();
+            for (int i= Application.OpenForms.Count-1;i>=0;i--)
+
+            {
+                Application.OpenForms[i].Close();
+
+
+            }
         }
         private void TwoPlayerButton_Click(object sender, EventArgs e)
         {
