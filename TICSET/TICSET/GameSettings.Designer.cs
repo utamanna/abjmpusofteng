@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel_AI_difficulty = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.hardradiobutton = new System.Windows.Forms.RadioButton();
+            this.easyradiobutton = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.FirstCombo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -69,9 +69,10 @@
             this.lbl_player_two.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.lbl_player_two.Location = new System.Drawing.Point(232, 43);
             this.lbl_player_two.Name = "lbl_player_two";
-            this.lbl_player_two.Size = new System.Drawing.Size(165, 21);
+            this.lbl_player_two.Size = new System.Drawing.Size(81, 21);
             this.lbl_player_two.TabIndex = 4;
-            this.lbl_player_two.Text = "Player Two Name Here";
+            this.lbl_player_two.Text = "Computer";
+            this.lbl_player_two.Click += new System.EventHandler(this.lbl_player_two_Click);
             // 
             // label3
             // 
@@ -109,7 +110,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel_AI_difficulty);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.FirstCombo);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(18, 104);
@@ -123,35 +124,35 @@
             // 
             // panel_AI_difficulty
             // 
-            this.panel_AI_difficulty.Controls.Add(this.radioButton2);
-            this.panel_AI_difficulty.Controls.Add(this.radioButton1);
+            this.panel_AI_difficulty.Controls.Add(this.hardradiobutton);
+            this.panel_AI_difficulty.Controls.Add(this.easyradiobutton);
             this.panel_AI_difficulty.Controls.Add(this.label2);
             this.panel_AI_difficulty.Location = new System.Drawing.Point(7, 57);
             this.panel_AI_difficulty.Name = "panel_AI_difficulty";
             this.panel_AI_difficulty.Size = new System.Drawing.Size(187, 87);
             this.panel_AI_difficulty.TabIndex = 4;
             // 
-            // radioButton2
+            // hardradiobutton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(4, 54);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(65, 23);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Hard";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.hardradiobutton.AutoSize = true;
+            this.hardradiobutton.Location = new System.Drawing.Point(4, 54);
+            this.hardradiobutton.Name = "hardradiobutton";
+            this.hardradiobutton.Size = new System.Drawing.Size(65, 23);
+            this.hardradiobutton.TabIndex = 3;
+            this.hardradiobutton.TabStop = true;
+            this.hardradiobutton.Text = "Hard";
+            this.hardradiobutton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // easyradiobutton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(4, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(61, 23);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Easy";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.easyradiobutton.AutoSize = true;
+            this.easyradiobutton.Location = new System.Drawing.Point(4, 24);
+            this.easyradiobutton.Name = "easyradiobutton";
+            this.easyradiobutton.Size = new System.Drawing.Size(61, 23);
+            this.easyradiobutton.TabIndex = 2;
+            this.easyradiobutton.TabStop = true;
+            this.easyradiobutton.Text = "Easy";
+            this.easyradiobutton.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -164,13 +165,18 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "AI Difficulty:";
             // 
-            // comboBox1
+            // FirstCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(64, 27);
-            this.comboBox1.TabIndex = 3;
+            this.FirstCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FirstCombo.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.FirstCombo.FormattingEnabled = true;
+            this.FirstCombo.Items.AddRange(new object[] {
+            "X",
+            "O"});
+            this.FirstCombo.Location = new System.Drawing.Point(130, 24);
+            this.FirstCombo.Name = "FirstCombo";
+            this.FirstCombo.Size = new System.Drawing.Size(64, 25);
+            this.FirstCombo.TabIndex = 3;
             // 
             // label6
             // 
@@ -225,12 +231,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_player_one;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox FirstCombo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel_AI_difficulty;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton hardradiobutton;
+        private System.Windows.Forms.RadioButton easyradiobutton;
         private System.Windows.Forms.Label label2;
     }
 }

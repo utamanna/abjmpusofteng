@@ -16,10 +16,18 @@ namespace TICSET
             InitializeComponent();
         }
 
-        public GameSettings(string player_one)
+        public GameSettings(string player)
         {
+
             InitializeComponent();
-            lbl_player_one.Text = player_one;
+            if (lbl_player_one.Text == player)
+            {
+               
+                lbl_player_two.Text = player;
+
+            }
+            else
+                lbl_player_one.Text = player;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +36,13 @@ namespace TICSET
             this.Visible = false;
             game.Show();
             
+        }
+
+        private void lbl_player_two_Click(object sender, EventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            this.Visible = false;
+            login.Show();
         }
     }
 }
