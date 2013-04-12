@@ -6,24 +6,24 @@ using System.Windows.Forms;
 namespace gamePlay
 {
 
-    class gameSettings
-    {
-        public Player player1;          //First player
-        public Player player2;          //Second Player, these are in arbitrary order
-        public char PieceThatGoesFirst; //X or O, first player
-        public int difficulty;
+    //class gameSettings
+    //{
+    //    public Player player1;          //First player
+    //    public Player player2;          //Second Player, these are in arbitrary order
+    //    public char PieceThatGoesFirst; //X or O, first player
+    //    public int difficulty;
 
 
-        public gameSettings(Player p1, Player p2, char firstPiece, int diff)
-        { ///constructor
-            player1 = p1;
-            player2 = p2;
-            PieceThatGoesFirst = firstPiece;
-            difficulty = diff;
-        }
+    //    public gameSettings(Player p1, Player p2, char firstPiece, int diff)
+    //    { ///constructor
+    //        player1 = p1;
+    //        player2 = p2;
+    //        PieceThatGoesFirst = firstPiece;
+    //        difficulty = diff;
+    //    }
 
         
-    }
+    //}
 
 
     class visualBoard
@@ -174,7 +174,7 @@ namespace gamePlay
         private Player player1;
         private Player player2;
         private string IDofPlayerMakingMove;
-        private gameSettings gs;
+        //private gameSettings gs;
         public Game(Player p1, Player p2, visualBoard vb)
         {
             player1 = p1;

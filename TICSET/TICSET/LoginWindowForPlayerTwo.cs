@@ -16,9 +16,10 @@ namespace TICSET
     {
         // Variables
         string player_two;
+        
 
         public string player_two_name { get; set; }
-
+        public string player_two_username { get; set; }
 
         // SQL connection
         string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
@@ -90,6 +91,7 @@ namespace TICSET
                     player_two = reader.GetString(2);
                     player_two += " " + reader.GetString(3);
 
+                    this.player_two_username = reader.GetString(0);
                     this.player_two_name = player_two;
                     this.Close();
 

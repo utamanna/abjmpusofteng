@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameSettings));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.image_keyboard = new System.Windows.Forms.PictureBox();
             this.lbl_player_two = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_player_one = new System.Windows.Forms.Label();
@@ -40,14 +42,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.FirstCombo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.start_game = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_keyboard)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel_AI_difficulty.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.image_keyboard);
             this.groupBox1.Controls.Add(this.lbl_player_two);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lbl_player_one);
@@ -62,12 +66,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Users";
             // 
+            // image_keyboard
+            // 
+            this.image_keyboard.Image = ((System.Drawing.Image)(resources.GetObject("image_keyboard.Image")));
+            this.image_keyboard.Location = new System.Drawing.Point(374, 37);
+            this.image_keyboard.Name = "image_keyboard";
+            this.image_keyboard.Size = new System.Drawing.Size(27, 27);
+            this.image_keyboard.TabIndex = 7;
+            this.image_keyboard.TabStop = false;
+            this.image_keyboard.Visible = false;
+            this.image_keyboard.Click += new System.EventHandler(this.image_keyboard_Click);
+            // 
             // lbl_player_two
             // 
             this.lbl_player_two.AutoSize = true;
             this.lbl_player_two.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_player_two.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.lbl_player_two.Location = new System.Drawing.Point(232, 43);
+            this.lbl_player_two.Location = new System.Drawing.Point(209, 43);
             this.lbl_player_two.Name = "lbl_player_two";
             this.lbl_player_two.Size = new System.Drawing.Size(81, 21);
             this.lbl_player_two.TabIndex = 4;
@@ -78,7 +93,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(228, 24);
+            this.label3.Location = new System.Drawing.Point(206, 24);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 17);
@@ -189,24 +204,24 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Who Goes First?";
             // 
-            // button1
+            // start_game
             // 
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(227, 147);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 69);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Start Game";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.start_game.BackColor = System.Drawing.Color.Green;
+            this.start_game.ForeColor = System.Drawing.Color.White;
+            this.start_game.Location = new System.Drawing.Point(227, 147);
+            this.start_game.Name = "start_game";
+            this.start_game.Size = new System.Drawing.Size(199, 69);
+            this.start_game.TabIndex = 6;
+            this.start_game.Text = "Start Game";
+            this.start_game.UseVisualStyleBackColor = false;
+            this.start_game.Click += new System.EventHandler(this.start_game_Click);
             // 
             // GameSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 268);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.start_game);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
@@ -215,6 +230,7 @@
             this.Text = "Settings";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_keyboard)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel_AI_difficulty.ResumeLayout(false);
@@ -233,10 +249,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox FirstCombo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button start_game;
         private System.Windows.Forms.Panel panel_AI_difficulty;
         private System.Windows.Forms.RadioButton hardradiobutton;
         private System.Windows.Forms.RadioButton easyradiobutton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox image_keyboard;
     }
 }

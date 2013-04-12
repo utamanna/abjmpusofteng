@@ -15,7 +15,7 @@ namespace TICSET
     public partial class LoginWindow : Form
     {
         // Variables
-        string player_one;
+        string player_one, player_one_username;
 
 
         // SQL connection
@@ -82,11 +82,11 @@ namespace TICSET
                 reader = sc.ExecuteReader();
                 if (reader.Read())
                 {
-
+                    player_one_username = reader.GetString(0);
                     player_one = reader.GetString(2);
                     player_one += " " + reader.GetString(3);
                     this.Visible = false;
-                    GameSettings gameSettings = new GameSettings(player_one);
+                    GameSettings gameSettings = new GameSettings(player_one, player_one_username);
                     gameSettings.Show();
                     
                 }
