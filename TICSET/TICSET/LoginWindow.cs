@@ -19,7 +19,7 @@ namespace TICSET
 
 
         // SQL connection
-        string connectionString = @"Data Source=C:\Users\bryan nafegar\Desktop\Users.sdf";
+        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
         private SqlCeConnection connection;
 
         public LoginWindow()
@@ -56,7 +56,7 @@ namespace TICSET
             }
             else
             {
-                errorProvider2.SetError(tb_password, " Please provide a username.");
+                errorProvider2.SetError(tb_password, " Please provide a password.");
             }
 
             if( isUsernameFull && isPasswordFull )
@@ -80,26 +80,25 @@ namespace TICSET
                                                    tb_password.Text + "'", connection);
                 SqlCeDataReader reader = null;
                 reader = sc.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
 
                     player_one = reader.GetString(2);
                     player_one += " " + reader.GetString(3);
                     this.Visible = false;
                     GameSettings gameSettings = new GameSettings(player_one);
-                    gameSettings.ShowDialog();
+                    gameSettings.Show();
                     
-
                 }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
+
                 connection.Close();
             }
 
 
-        }
-
-        private void checkLogin(string user_name, string user_password)
-        {
-            
         }
 
         private void LoginWindow_Load(object sender, EventArgs e)

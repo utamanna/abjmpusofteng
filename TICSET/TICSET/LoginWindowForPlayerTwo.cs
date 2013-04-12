@@ -17,14 +17,17 @@ namespace TICSET
         // Variables
         string player_two;
 
+        public string player_two_name { get; set; }
+
 
         // SQL connection
-        string connectionString = @"Data Source=C:\Users\bryan nafegar\Desktop\Users.sdf";
+        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
         private SqlCeConnection connection;
 
         public LoginWindowForPlayerTwo()
         {
             InitializeComponent();
+            btn_login.Focus();
         }
 
         private void lbl_new_user_Click(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace TICSET
             }
             else
             {
-                errorProvider2.SetError(tb_password, " Please provide a username.");
+                errorProvider2.SetError(tb_password, " Please provide a password.");
             }
 
             if (isUsernameFull && isPasswordFull)
@@ -86,12 +89,12 @@ namespace TICSET
 
                     player_two = reader.GetString(2);
                     player_two += " " + reader.GetString(3);
-                    this.Visible = false;
-                    GameSettings gameSettings = new GameSettings(player_two);
-                    gameSettings.ShowDialog();
 
+                    this.player_two_name = player_two;
+                    this.Close();
 
                 }
+
                 connection.Close();
             }
 

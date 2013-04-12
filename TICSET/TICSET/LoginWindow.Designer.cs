@@ -41,6 +41,7 @@
             this.lbl_forgot_password = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -51,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(52, 9);
+            this.label1.Location = new System.Drawing.Point(58, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 19);
             this.label1.TabIndex = 0;
@@ -74,21 +75,21 @@
             this.panel1.Controls.Add(this.tb_username);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold);
-            this.panel1.Location = new System.Drawing.Point(12, 41);
+            this.panel1.Location = new System.Drawing.Point(18, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 42);
+            this.panel1.Size = new System.Drawing.Size(294, 42);
             this.panel1.TabIndex = 0;
             // 
             // tb_username
             // 
-            this.tb_username.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_username.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_username.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.tb_username.Location = new System.Drawing.Point(93, 6);
+            this.tb_username.Location = new System.Drawing.Point(101, 6);
             this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(141, 27);
+            this.tb_username.Size = new System.Drawing.Size(164, 27);
             this.tb_username.TabIndex = 0;
             this.tb_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -99,22 +100,22 @@
             this.panel2.Controls.Add(this.tb_password);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold);
-            this.panel2.Location = new System.Drawing.Point(12, 89);
+            this.panel2.Location = new System.Drawing.Point(18, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 42);
+            this.panel2.Size = new System.Drawing.Size(294, 42);
             this.panel2.TabIndex = 2;
             // 
             // tb_password
             // 
-            this.tb_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_password.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_password.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_password.Location = new System.Drawing.Point(93, 6);
+            this.tb_password.Location = new System.Drawing.Point(101, 6);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '•';
-            this.tb_password.Size = new System.Drawing.Size(141, 27);
+            this.tb_password.Size = new System.Drawing.Size(164, 27);
             this.tb_password.TabIndex = 1;
             this.tb_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -133,11 +134,11 @@
             this.lbl_new_user.AutoSize = true;
             this.lbl_new_user.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic);
             this.lbl_new_user.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_new_user.Location = new System.Drawing.Point(12, 134);
+            this.lbl_new_user.Location = new System.Drawing.Point(93, 134);
             this.lbl_new_user.Name = "lbl_new_user";
-            this.lbl_new_user.Size = new System.Drawing.Size(174, 16);
+            this.lbl_new_user.Size = new System.Drawing.Size(109, 16);
             this.lbl_new_user.TabIndex = 0;
-            this.lbl_new_user.Text = "New User? Create Account.";
+            this.lbl_new_user.Text = "Create Account.";
             this.lbl_new_user.Click += new System.EventHandler(this.lbl_new_user_Click);
             // 
             // btn_login
@@ -145,9 +146,9 @@
             this.btn_login.BackColor = System.Drawing.Color.Green;
             this.btn_login.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btn_login.ForeColor = System.Drawing.Color.White;
-            this.btn_login.Location = new System.Drawing.Point(74, 153);
+            this.btn_login.Location = new System.Drawing.Point(80, 153);
             this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(142, 41);
+            this.btn_login.Size = new System.Drawing.Size(142, 59);
             this.btn_login.TabIndex = 3;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = false;
@@ -157,7 +158,7 @@
             // 
             this.lbl_forgot_password.AutoSize = true;
             this.lbl_forgot_password.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic);
-            this.lbl_forgot_password.Location = new System.Drawing.Point(87, 197);
+            this.lbl_forgot_password.Location = new System.Drawing.Point(93, 215);
             this.lbl_forgot_password.Name = "lbl_forgot_password";
             this.lbl_forgot_password.Size = new System.Drawing.Size(112, 16);
             this.lbl_forgot_password.TabIndex = 0;
@@ -171,11 +172,22 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(17, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "New User?";
+            // 
             // LoginWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 219);
+            this.ClientSize = new System.Drawing.Size(324, 251);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_forgot_password);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.lbl_new_user);
@@ -210,5 +222,6 @@
         private System.Windows.Forms.Label lbl_forgot_password;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Label label4;
     }
 }

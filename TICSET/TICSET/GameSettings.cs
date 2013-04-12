@@ -18,18 +18,9 @@ namespace TICSET
 
         public GameSettings(string player)
         {
-
             InitializeComponent();
-            if (lbl_player_one.Text == player)
-            {
-               
-                lbl_player_two.Text = player;
-
-            }
-            else
-                lbl_player_one.Text = player;
+            lbl_player_one.Text = player;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 game = new Form1();
@@ -38,11 +29,19 @@ namespace TICSET
             
         }
 
+        // ==============================
+        // LOGIN FOR PLAYER TWO
+        // ==============================
         private void lbl_player_two_Click(object sender, EventArgs e)
         {
-            LoginWindow login = new LoginWindow();
-            this.Visible = false;
-            login.Show();
+            var login = new LoginWindowForPlayerTwo();
+            var result = login.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string tmp = login.player_two_name;
+                lbl_player_two.Text = tmp;
+            }
         }
     }
 }
