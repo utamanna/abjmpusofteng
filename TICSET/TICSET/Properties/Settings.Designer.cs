@@ -72,5 +72,15 @@ namespace TICSET.Properties {
                 return ((string)(this["UsersConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Users4.0.sdf")]
+        public string Users4_0ConnectionString {
+            get {
+                return ((string)(this["Users4_0ConnectionString"]));
+            }
+        }
     }
 }

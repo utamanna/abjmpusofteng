@@ -103,8 +103,8 @@ namespace TICSET
             button23.Enabled = false;
             button24.Enabled = false;
             button25.Enabled = false;
-           
-            
+
+            InitGame();
         }
 
         private bool CheckDraw(Button[] btnCtrl)

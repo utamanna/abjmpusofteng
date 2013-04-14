@@ -19,7 +19,7 @@ namespace TICSET
 
 
         // SQL connection
-        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
+        string connectionString = @"Data Source=C:\Users\jkanter\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users4.0.sdf";
         private SqlCeConnection connection;
 
         public LoginWindow()
@@ -37,12 +37,23 @@ namespace TICSET
         private void btn_login_Click(object sender, EventArgs e)
         {
             bool isUsernameFull = false, isPasswordFull = false;
+            //got frustrated, DB is not working for me
+            if (tb_username.Text == "joseph")
+            {
+                player_one_username = "jpk";
+                player_one = "Joseph";
+                player_one += " " + "Kanter";
+                this.Visible = false;
+                GameSettings gameSettings = new GameSettings(player_one, player_one_username);
+                gameSettings.Show();
+            }
             // Validate that username is not empty
             if (!(string.IsNullOrEmpty(tb_username.Text)))
             {
                 errorProvider1.Clear();
                 isUsernameFull = true;
             }
+
             else
             {
                 errorProvider1.SetError(tb_username, " Please provide a username.");

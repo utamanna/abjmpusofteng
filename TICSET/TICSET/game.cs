@@ -170,31 +170,49 @@ namespace gamePlay
     }
     class Game
     {
-        private virtualBoard GameBoard;
+        private virtualBoard virtualBoard;
         private Player player1;
         private Player player2;
         private string IDofPlayerMakingMove;
+        private char PieceOfPlayerMakingMove;
         //private gameSettings gs;
-        public Game(Player p1, Player p2, visualBoard vb)
-        {
-            player1 = p1;
-            player2 = p2;
-            GameBoard = new virtualBoard(vb);
-            GameBoard.bindGame(this);
-            IDofPlayerMakingMove = player1.getID();
-            player1.startTurn(GameBoard); //player one always goes first
+        
 
+        
+        public Game(Settings settings)
+        {
+            player1 = settings.player1;
+            player2 = settings.player2;
+            PieceOfPlayerMakingMove = settings.PieceThatGoesFirst;
+
+            if (settings.difficulty == 1 || settings.difficulty == 2)
+            {
+                //something here that says its a computer player
+            }
+            if (player1.getGamePiece() == PieceOfPlayerMakingMove)
+            {
+                IDofPlayerMakingMove = player1.getID();
+                player1.startTurn(virtualBoard);
+            }
+            else if (player2.getGamePiece() == PieceOfPlayerMakingMove)
+            {
+                IDofPlayerMakingMove = player2.getID();
+                player2.startTurn(virtualBoard);
+
+            }
+            Form1 vb = new Form1();
+            
         }
         public void Turnover()
         {
             if (player1.getID() == IDofPlayerMakingMove)
             {
-                player2.startTurn(GameBoard);
+                player2.startTurn(virtualBoard);
                 IDofPlayerMakingMove = player2.getID();
             }
             else
             {
-                player1.startTurn(GameBoard);
+                player1.startTurn(virtualBoard);
                 IDofPlayerMakingMove = player1.getID();
             }
         }
@@ -202,7 +220,7 @@ namespace gamePlay
         {
             if (p.getID() == IDofPlayerMakingMove)
             {
-                GameBoard.commitMove(p, position);
+                virtualBoard.commitMove(p, position);
                 Turnover();
             }
            

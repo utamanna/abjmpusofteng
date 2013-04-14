@@ -115,6 +115,8 @@ namespace TICSET
             // =======================
             settings = new Settings(player_one, player_two, whoGoesFirst, difficulty);
 
+            Game game = new Game(settings);
+
             // Joe, You can instantiate a game class here and start
             // a Form1 object inside your class here....
 
