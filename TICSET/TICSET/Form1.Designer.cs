@@ -53,11 +53,6 @@
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Bar1 = new System.Windows.Forms.PictureBox();
             this.bar2 = new System.Windows.Forms.PictureBox();
             this.bar3 = new System.Windows.Forms.PictureBox();
@@ -67,14 +62,7 @@
             this.bar7 = new System.Windows.Forms.PictureBox();
             this.bar8 = new System.Windows.Forms.PictureBox();
             this.label_1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TwoPlayerButton = new System.Windows.Forms.Button();
-            this.OnePlayerbutton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Os_button = new System.Windows.Forms.Button();
-            this.Xs_button = new System.Windows.Forms.Button();
-            this.resetButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.button28 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar3)).BeginInit();
@@ -83,8 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bar6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar8)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Button1
@@ -362,64 +348,6 @@
             this.button25.Text = "25";
             this.button25.UseVisualStyleBackColor = true;
             // 
-            // button26
-            // 
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button26.Location = new System.Drawing.Point(40, 38);
-            this.button26.Margin = new System.Windows.Forms.Padding(2);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(70, 30);
-            this.button26.TabIndex = 27;
-            this.button26.Text = "Easy";
-            this.button26.UseVisualStyleBackColor = true;
-            // 
-            // button27
-            // 
-            this.button27.Location = new System.Drawing.Point(125, 38);
-            this.button27.Margin = new System.Windows.Forms.Padding(2);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(70, 30);
-            this.button27.TabIndex = 28;
-            this.button27.Text = "Hard";
-            this.button27.UseVisualStyleBackColor = true;
-            // 
-            // button28
-            // 
-            this.button28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button28.Location = new System.Drawing.Point(534, 433);
-            this.button28.Margin = new System.Windows.Forms.Padding(2);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(93, 43);
-            this.button28.TabIndex = 29;
-            this.button28.Text = "Exit";
-            this.button28.UseVisualStyleBackColor = true;
-            this.button28.Click += new System.EventHandler(this.button28_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button26);
-            this.groupBox1.Controls.Add(this.button27);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(517, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(250, 89);
-            this.groupBox1.TabIndex = 30;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Difficulty";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 16);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Please select the difficulty";
-            // 
             // Bar1
             // 
             this.Bar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -504,96 +432,26 @@
             // 
             this.label_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_1.Location = new System.Drawing.Point(517, 292);
+            this.label_1.Location = new System.Drawing.Point(520, 11);
             this.label_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_1.MinimumSize = new System.Drawing.Size(250, 120);
             this.label_1.Name = "label_1";
-            this.label_1.Size = new System.Drawing.Size(250, 120);
+            this.label_1.Size = new System.Drawing.Size(250, 401);
             this.label_1.TabIndex = 63;
             // 
-            // groupBox2
+            // button28
             // 
-            this.groupBox2.Controls.Add(this.TwoPlayerButton);
-            this.groupBox2.Controls.Add(this.OnePlayerbutton);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(517, 104);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(250, 89);
-            this.groupBox2.TabIndex = 64;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Number of Players";
-            // 
-            // TwoPlayerButton
-            // 
-            this.TwoPlayerButton.Location = new System.Drawing.Point(128, 38);
-            this.TwoPlayerButton.Margin = new System.Windows.Forms.Padding(2);
-            this.TwoPlayerButton.Name = "TwoPlayerButton";
-            this.TwoPlayerButton.Size = new System.Drawing.Size(70, 30);
-            this.TwoPlayerButton.TabIndex = 1;
-            this.TwoPlayerButton.Text = "Two";
-            this.TwoPlayerButton.UseVisualStyleBackColor = true;
-            this.TwoPlayerButton.Click += new System.EventHandler(this.TwoPlayerButton_Click);
-            // 
-            // OnePlayerbutton
-            // 
-            this.OnePlayerbutton.Location = new System.Drawing.Point(40, 38);
-            this.OnePlayerbutton.Margin = new System.Windows.Forms.Padding(2);
-            this.OnePlayerbutton.Name = "OnePlayerbutton";
-            this.OnePlayerbutton.Size = new System.Drawing.Size(70, 30);
-            this.OnePlayerbutton.TabIndex = 0;
-            this.OnePlayerbutton.Text = "One";
-            this.OnePlayerbutton.UseVisualStyleBackColor = true;
-            this.OnePlayerbutton.Click += new System.EventHandler(this.OnePlayerbutton_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.Os_button);
-            this.groupBox3.Controls.Add(this.Xs_button);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(517, 197);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(250, 89);
-            this.groupBox3.TabIndex = 91;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Select who goes first";
-            // 
-            // Os_button
-            // 
-            this.Os_button.Location = new System.Drawing.Point(128, 38);
-            this.Os_button.Margin = new System.Windows.Forms.Padding(2);
-            this.Os_button.Name = "Os_button";
-            this.Os_button.Size = new System.Drawing.Size(70, 30);
-            this.Os_button.TabIndex = 1;
-            this.Os_button.Text = "O\'s";
-            this.Os_button.UseVisualStyleBackColor = true;
-            this.Os_button.Click += new System.EventHandler(this.Os_bttuon_Click);
-            // 
-            // Xs_button
-            // 
-            this.Xs_button.Location = new System.Drawing.Point(40, 38);
-            this.Xs_button.Margin = new System.Windows.Forms.Padding(2);
-            this.Xs_button.Name = "Xs_button";
-            this.Xs_button.Size = new System.Drawing.Size(70, 30);
-            this.Xs_button.TabIndex = 0;
-            this.Xs_button.Text = "X\'s";
-            this.Xs_button.UseVisualStyleBackColor = true;
-            this.Xs_button.Click += new System.EventHandler(this.Xs_button_Click);
-            // 
-            // resetButton
-            // 
-            this.resetButton.AccessibleName = "";
-            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(645, 433);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(93, 43);
-            this.resetButton.TabIndex = 92;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.button28.BackColor = System.Drawing.Color.Red;
+            this.button28.Font = new System.Drawing.Font("Century Gothic", 22F, System.Drawing.FontStyle.Bold);
+            this.button28.ForeColor = System.Drawing.Color.White;
+            this.button28.Location = new System.Drawing.Point(534, 433);
+            this.button28.Margin = new System.Windows.Forms.Padding(2);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(220, 57);
+            this.button28.TabIndex = 29;
+            this.button28.Text = "Exit";
+            this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // Form1
             // 
@@ -601,9 +459,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 504);
             this.ControlBox = false;
-            this.Controls.Add(this.resetButton);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label_1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.bar8);
@@ -615,7 +470,6 @@
             this.Controls.Add(this.bar2);
             this.Controls.Add(this.Bar1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button28);
             this.Controls.Add(this.Button1);
             this.Controls.Add(this.button25);
@@ -644,8 +498,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar3)).EndInit();
@@ -654,8 +506,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bar6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar8)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -687,11 +537,6 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Bar1;
         private System.Windows.Forms.PictureBox bar2;
         private System.Windows.Forms.PictureBox bar3;
@@ -701,13 +546,7 @@
         private System.Windows.Forms.PictureBox bar7;
         private System.Windows.Forms.PictureBox bar8;
         private System.Windows.Forms.Label label_1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button TwoPlayerButton;
-        private System.Windows.Forms.Button OnePlayerbutton;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button Os_button;
-        private System.Windows.Forms.Button Xs_button;
-        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button button28;
     }
 }
 

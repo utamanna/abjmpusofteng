@@ -19,7 +19,7 @@ namespace TICSET
 
 
         // SQL connection
-        string connectionString = @"Data Source=C:\Users\jkanter\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users4.0.sdf";
+        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
         private SqlCeConnection connection;
 
         public LoginWindow()

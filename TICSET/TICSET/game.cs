@@ -201,6 +201,7 @@ namespace gamePlay
 
             }
             Form1 vb = new Form1();
+            vb.Show();
             
         }
         public void Turnover()

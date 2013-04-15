@@ -221,9 +221,7 @@
     <None Include="Resources\keyboard.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Users4.0.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Users4.0.sdf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
