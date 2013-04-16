@@ -36,8 +36,9 @@ namespace TICSET
             InitializeComponent();
             lbl_player_one.Text = player;
             p_one_username = player_username;
-            player_one = new Player(player_username, x, player_one_boolean);
-            player_two = new Player("Computer", o, player_two_boolean);
+            player_one = new HumanPlayer(player_username, x);
+            //player_two = new Player("Computer", o, player_two_boolean);
+            player_two = new computerPlayer(o);
         }
 
 

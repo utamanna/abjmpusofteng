@@ -147,7 +147,7 @@ namespace TICSET
         //    isX = true;
             //InitGame();
         }
-        public void commitMove(int pos, char piece)
+        public void drawMove(int pos, char piece)
         {
             Button tmp = ButtonArray[pos];
 
@@ -182,7 +182,7 @@ namespace TICSET
          private bool IsGameOver(Button[] btnCtrl)
         {
             bool gameOver = false;
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 28; i++)
             {
                 int a = winPattern[i, 0], b = winPattern[i, 1], c = winPattern[i, 2],d = winPattern[i,3];//,e=winPattern[i,4],f=winPattern[i,5];		
                 
@@ -207,7 +207,7 @@ namespace TICSET
              Button tmp = (Button)sender;
 
              game.makeMove(getButtonPos(tmp));
-
+             /*
              if (this.isGameOver)
              {
                  MessageBox.Show("Game Over");
@@ -223,7 +223,7 @@ namespace TICSET
                  isX = !isX;
              }
              this.isGameOver = IsGameOver(ButtonArray) || CheckDraw(ButtonArray);
-
+             */
          }
              
 

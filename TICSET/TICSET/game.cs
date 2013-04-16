@@ -26,50 +26,6 @@ namespace gamePlay
     //}
 
 
-    public class visualBoard
-    {   //Deprecated byUsman Joe and Bryan on 4/10, will become Form1
-        private Button[] buttonArray;
-        public visualBoard(Button[] ba)
-        {
-            /*
-             * Makes sure all buttons are loaded and not set to X or O (possibly by calling resetBoard())
-             * Loads private variable buttonArray with 25 buttons
-             *  
-             */
-            buttonArray = ba;
-
-
-        }
-        public void resetBoard()
-        {
-            /*
-             * Resets the buttons on the UI to be blank
-             */
-        }
-        public void makeMove(char piece, int position)
-        {
-            /*
-             * Piece is either 'X' or 'O'
-             * position is 0-24 marker of the board. The board is of the format:
-             * 0   1   2   3   4
-             * 5   6   7   8   9
-             * 10  11  12  13  14
-             * 15  16  17  18  19
-             * 20  21  22  23  24
-             * 
-             * When makeMove is called, 
-             * the UI needs to update the button that corresponds to the position to be either X or O according to the value passed by piece
-             * 
-             */
-            buttonArray[position].Text = Convert.ToString(piece);
-            
-        }
-
-
-
-
-
-    }
     public class virtualBoard
     {
         /*
@@ -106,8 +62,8 @@ namespace gamePlay
             //commits a move to the board and calls "log", a not-yet-implemented function to log the move in the database;
             //TODO: Can someone link this back to the UI so that It makes the move visible?
             board[pos] = Player.getGamePiece();
-            MessageBox.Show("Computer is making moves");
-            vBoard.commitMove( pos,Player.getGamePiece()); //display the move
+            
+            vBoard.drawMove( pos, Player.getGamePiece()); //display the move
             game.Turnover(); //we are done making moves. Change turn to other player.
             //log();
         }
@@ -150,7 +106,7 @@ namespace gamePlay
         {
             return GamePiece;
         }
-        public void startTurn(virtualBoard board) { }
+        public virtual void startTurn(Game game) { }
 
     }
     class HumanPlayer : Player
@@ -162,21 +118,24 @@ namespace gamePlay
         public HumanPlayer(string ID, char piece)
             : base(ID, piece, true)
         {
-
+            GamePiece = piece;
+            id = ID;
+            isHuman = true;
         }
-        public void startTurn(virtualBoard board)
+        public override void startTurn(Game game)
         {
-            //how do I start a turn for human?
 
+            //MessageBox.Show("human's move");
         }
     }
     public class Game
     {
-        private virtualBoard virtualBoard;
+        public virtualBoard virtualBoard;
         private Player player1;
         private Player player2;
-        private string IDofPlayerMakingMove;
-        private char PieceOfPlayerMakingMove;
+        private Player currentPlayer;
+        //private string IDofPlayerMakingMove;
+        //private char PieceOfPlayerMakingMove;
         private Form1 vb;
         //private gameSettings gs;
         
@@ -186,7 +145,16 @@ namespace gamePlay
         {
             player1 = settings.player1;
             player2 = settings.player2;
-            PieceOfPlayerMakingMove = settings.PieceThatGoesFirst;
+            //MessageBox.Show(player2.getID());
+            if (player1.getGamePiece() == settings.PieceThatGoesFirst) 
+            {
+                currentPlayer = player1;
+            }
+            else if (player2.getGamePiece() == settings.PieceThatGoesFirst) 
+            {
+                currentPlayer = player2;
+            }
+
             vb = new Form1(settings, this);
             
             virtualBoard = new virtualBoard(vb, this);
@@ -194,37 +162,26 @@ namespace gamePlay
             {
                 //something here that says its a computer player
             }
-            if (player1.getGamePiece() == PieceOfPlayerMakingMove)
-            {
-                IDofPlayerMakingMove = player1.getID();
-                player1.startTurn(virtualBoard);
-            }
-            else if (player2.getGamePiece() == PieceOfPlayerMakingMove)
-            {
-                IDofPlayerMakingMove = player2.getID();
-                player2.startTurn(virtualBoard);
-
-            }
+            currentPlayer.startTurn(this);
             
             vb.Show();
             
         }
         public void Turnover()
         {
-            if (player1.getID() == IDofPlayerMakingMove)
+            if (player1.getID() == currentPlayer.getID())
             {
-                player2.startTurn(virtualBoard);
-                IDofPlayerMakingMove = player2.getID();
+                currentPlayer = player2;
             }
             else
             {
-                player1.startTurn(virtualBoard);
-                IDofPlayerMakingMove = player1.getID();
+                currentPlayer = player1;
             }
+            currentPlayer.startTurn(this);
         }
         public void makeMove(Player p, int position)
         { //might be obsolete
-            if (p.getID() == IDofPlayerMakingMove)
+            if (p.getID() == currentPlayer.getID())
             {
                 virtualBoard.commitMove(p, position);
                 Turnover();
@@ -236,18 +193,18 @@ namespace gamePlay
         }
         public void makeMove(int position)
         {
-            if (player1.getID() == IDofPlayerMakingMove)
+            //MessageBox.Show("making move: "+position);
+            if (player1.getID() == currentPlayer.getID())
             {
                 virtualBoard.commitMove(player1, position);
-                Turnover();
             }
-            if (player2.getID() == IDofPlayerMakingMove)
+            if (player2.getID() == currentPlayer.getID())
             {
                 virtualBoard.commitMove(player2, position);
-                Turnover();
+                
             }
 
-
+            //Turnover();
 
         }
     }
