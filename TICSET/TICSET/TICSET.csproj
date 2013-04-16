@@ -121,6 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Users4_0DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
