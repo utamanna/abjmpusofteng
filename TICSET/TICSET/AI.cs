@@ -208,8 +208,8 @@ namespace AI
                     bestMoveValue = DefensiveMoves[index] + OffensiveMoves[index];      //and the best move value to the value
                 }
             }
-
-            GameBoard.commitMove(this, bestMoveIndex);                    //When we have the best move, commit it
+            MessageBox.Show("Computer move: " + bestMoveIndex);
+            GameBoard.commitMove(bestMoveIndex);                    //When we have the best move, commit it
 
         }
 

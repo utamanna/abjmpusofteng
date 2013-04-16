@@ -2,7 +2,6 @@
 //int streak weight
 
 using System;
-using AI;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,23 +13,22 @@ using gamePlay;
 
 namespace TICSET
 {
+ 
+
     public partial class Form1 : Form
     {
         // Variables for who goes first
-        private bool xGoesFirst = false;
-        private bool oGoesFirst = false;
-        private bool whoGoesFirstChosen = false;
+        //private bool xGoesFirst = false;
+        //private bool oGoesFirst = false;
+        //private bool whoGoesFirstChosen = false;
         // End
+
+        private Settings settings;
+        public Game game;
 
         private Button[] ButtonArray;
         private bool isX;
         private bool isGameOver;
-
-        HumanPlayer p1;
-        computerPlayer p2;
-
-        Game currentGame;
-
         private int[,] winPattern ={
             {0,1,2,3},
             {1,2,3,4},
@@ -59,75 +57,117 @@ namespace TICSET
             {1,7,13,19},
             {3,7,11,15},
             {8,12,16,20},
-            
             {9,13,17,21}};
         private void Form1_Load(object sender, EventArgs e)
         {
-            ButtonArray = new Button[25]{Button1,button2, button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,button20
-        ,button21,button22,button23,button24,button25};
+            ButtonArray = new Button[25]{Button1, button2, button3, button4, button5,
+                                         button6, button7, button8, button9, button10,
+                                         button11,button12,button13,button14,button15,
+                                         button16, button17, button18, button19, button20,
+                                         button21, button22, button23, button24, button25};
             
-
             foreach (Button ctrlBtn in ButtonArray)
+ 
             {
-                ctrlBtn.Click += new System.EventHandler(this.makeMove);
+
+                ctrlBtn.Click += new System.EventHandler(this.DrawCharacter);
+
+                ctrlBtn.Text = "";
+                //Action forLater = () => foo(bar);
+                ctrlBtn.BackColor = Color.Transparent;
+                ctrlBtn.Font = new System.Drawing.Font("Comic Sans MS", 40f,
+                                                         System.Drawing.FontStyle.Bold,
+                                                         System.Drawing.GraphicsUnit.Point,
+                                                         ((System.Byte)(0)));
             }
-            visualBoard vb = new visualBoard(ButtonArray);
-            InitGame(vb);
+            //InitGame();
         }
-        private void InitGame(visualBoard vb)
+        private int getButtonPos(Button b)
         {
-            foreach (Button btn in ButtonArray)
-            {
-                btn.Text = "";
-                btn.BackColor = Color.Transparent;
-                btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-            }
-            isGameOver = false;
-            isX = true;
-            
-            HumanPlayer p1 = new HumanPlayer("Joe", 'X');
-            computerPlayer p2 = new computerPlayer('O');
-
-            currentGame = new Game(p1, p2, vb);
-
-
-            //Assume Computer is always O's.
-            
-
+            string name = b.Name;
+            name = name.Replace("button", "");
+            name = name.Replace("Button", "");
+            int i = Convert.ToInt32(name);
+            return i-1;
         }
-        public Form1()
+        //private void InitGame()
+        //{
+        //    foreach (Button btn in ButtonArray)
+        //    {
+        //        btn.Text = "";
+        //        btn.BackColor = Color.Transparent;
+        //        btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+        //    }
+        //    isGameOver = false;
+        //    isX = true;
+        //}
+        public Form1(Settings gs, Game gam)
         {
+            game = gam;
+            settings = gs;
             InitializeComponent();
             
-            Button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            button8.Enabled = false;
-            button9.Enabled = false;
-            button10.Enabled = false;
-            button11.Enabled = false;
-            button12.Enabled = false;
-            button13.Enabled = false;
-            button14.Enabled = false;
-            button15.Enabled = false;
-            button16.Enabled = false;
-            button17.Enabled = false;
-            button18.Enabled = false;
-            button19.Enabled = false;
-            button20.Enabled = false;
-            button21.Enabled = false;
-            button22.Enabled = false;
-            button23.Enabled = false;
-            button24.Enabled = false;
-            button25.Enabled = false;
-           
-            
-        }
+            //Button1.Enabled = false;
+            //button2.Enabled = false;
+            //button3.Enabled = false;
+            //button4.Enabled = false;
+            //button5.Enabled = false;
+            //button6.Enabled = false;
+            //button7.Enabled = false;
+            //button8.Enabled = false;
+            //button9.Enabled = false;
+            //button10.Enabled = false;
+            //button11.Enabled = false;
+            //button12.Enabled = false;
+            //button13.Enabled = false;
+            //button14.Enabled = false;
+            //button15.Enabled = false;
+            //button16.Enabled = false;
+            //button17.Enabled = false;
+            //button18.Enabled = false;
+            //button19.Enabled = false;
+            //button20.Enabled = false;
+            //button21.Enabled = false;
+            //button22.Enabled = false;
+            //button23.Enabled = false;
+            //button24.Enabled = false;
+            //button25.Enabled = false;
 
+        //    ButtonArray = new Button[25]{Button1,button2, button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15,button16,button17,button18,button19,button20
+        //,button21,button22,button23,button24,button25};
+        //    foreach (Button ctrlBtn in ButtonArray)
+        //    {
+        //        ctrlBtn.Enabled = false;
+        //        ctrlBtn.Click += new System.EventHandler(this.DrawCharacter);
+        //        ctrlBtn.Text = "";
+        //        ctrlBtn.BackColor = Color.Transparent;
+        //        ctrlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+        //    }
+        //    isGameOver = false;
+        //    isX = true;
+            //InitGame();
+        }
+        public void commitMove(int pos, char piece)
+        {
+            Button tmp = ButtonArray[pos];
+
+            if (this.isGameOver)
+            {
+                MessageBox.Show("Game Over");
+            }
+
+            if (tmp.Text != "")
+            {
+                MessageBox.Show("Move not allowed", "Incorrect Move");
+            }
+            else
+            {
+                tmp.Text = "" + piece; //type convert to string
+                isX = !isX;
+            }
+            this.isGameOver = IsGameOver(ButtonArray) || CheckDraw(ButtonArray);
+
+        }
         private bool CheckDraw(Button[] btnCtrl)
         {
             foreach (Button btn in btnCtrl)
@@ -161,32 +201,25 @@ namespace TICSET
             }
             return gameOver;
         }
-         private void makeMove(object sender, EventArgs e)
+        
+         private void DrawCharacter(object sender, EventArgs e)
          {
              Button tmp = (Button)sender;
-             string name = tmp.Name;
-             name = name.Remove(0, 6); //remove "button" from name. example: button8 becomes 8
-             int position = Convert.ToInt32(name);
-             DrawCharacter(tmp);
-         }
-         private void DrawCharacter(Button buttonObj)
-         {
-             
-             string name = buttonObj.Name;
-             
+
+             game.makeMove(getButtonPos(tmp));
 
              if (this.isGameOver)
              {
                  MessageBox.Show("Game Over");
              }
-
-             if (buttonObj.Text != "")
+             
+             if (tmp.Text != "")
              {
                  MessageBox.Show("Move not allowed", "Incorrect Move");
              }
              else
              {
-                 buttonObj.Text = (isX) ? "X" : "O";
+                 tmp.Text = (isX) ? "X" : "O";
                  isX = !isX;
              }
              this.isGameOver = IsGameOver(ButtonArray) || CheckDraw(ButtonArray);
@@ -196,142 +229,149 @@ namespace TICSET
 
         private void button28_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+           // this.Close();
+            for (int i= Application.OpenForms.Count-1;i>=0;i--)
+
+            {
+                Application.OpenForms[i].Close();
+
+
+            }
         }
-        private void TwoPlayerButton_Click(object sender, EventArgs e)
-        {
-             TwoPlayerButton.Enabled = false;
-             label_1.Text  = "\n  Two players\n  Player One is X\n  Player Two is O ";
-             OnePlayerbutton.Enabled = false;
+        //private void TwoPlayerButton_Click(object sender, EventArgs e)
+        //{
+        //     TwoPlayerButton.Enabled = false;
+        //     label_1.Text  = "\n  Two players\n  Player One is X\n  Player Two is O ";
+        //     OnePlayerbutton.Enabled = false;
             
-        }
+        //}
 
-        private void OnePlayerbutton_Click(object sender, EventArgs e)
-        {
-            OnePlayerbutton.Enabled = false;
-            label_1.Text = " There will be one player, Player 1 is X and the computer is O";
-            p2 = new computerPlayer('O');
-            TwoPlayerButton.Enabled = false;
-            Button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            button10.Enabled = true;
-            button11.Enabled = true;
-            button12.Enabled = true;
-            button13.Enabled = true;
-            button14.Enabled = true;
-            button15.Enabled = true;
-            button16.Enabled = true;
-            button17.Enabled = true;
-            button18.Enabled = true;
-            button19.Enabled = true;
-            button20.Enabled = true;
-            button21.Enabled = true;
-            button22.Enabled = true;
-            button23.Enabled = true;
-            button24.Enabled = true;
-            button25.Enabled = true;
-        }
+        //private void OnePlayerbutton_Click(object sender, EventArgs e)
+        //{
+        //    OnePlayerbutton.Enabled = false;
+        //    label_1.Text = " There will be one player, Player 1 is X and the computer is O";
+        //    TwoPlayerButton.Enabled = false;
+        //    Button1.Enabled = true;
+        //    button2.Enabled = true;
+        //    button3.Enabled = true;
+        //    button4.Enabled = true;
+        //    button5.Enabled = true;
+        //    button6.Enabled = true;
+        //    button7.Enabled = true;
+        //    button8.Enabled = true;
+        //    button9.Enabled = true;
+        //    button10.Enabled = true;
+        //    button11.Enabled = true;
+        //    button12.Enabled = true;
+        //    button13.Enabled = true;
+        //    button14.Enabled = true;
+        //    button15.Enabled = true;
+        //    button16.Enabled = true;
+        //    button17.Enabled = true;
+        //    button18.Enabled = true;
+        //    button19.Enabled = true;
+        //    button20.Enabled = true;
+        //    button21.Enabled = true;
+        //    button22.Enabled = true;
+        //    button23.Enabled = true;
+        //    button24.Enabled = true;
+        //    button25.Enabled = true;
+        //}
 
-        private void Xs_button_Click(object sender, EventArgs e)
-        {
-            isX = true; // Controls who goes first, in this case X goes first
-            Xs_button.Enabled = false;
-            Os_button.Enabled = false;
-            Button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            button10.Enabled = true;
-            button11.Enabled = true;
-            button12.Enabled = true;
-            button13.Enabled = true;
-            button14.Enabled = true;
-            button15.Enabled = true;
-            button16.Enabled = true;
-            button17.Enabled = true;
-            button18.Enabled = true;
-            button19.Enabled = true;
-            button20.Enabled = true;
-            button21.Enabled = true;
-            button22.Enabled = true;
-            button23.Enabled = true;
-            button24.Enabled = true;
-            button25.Enabled = true;
-        }
-        private void Os_bttuon_Click(object sender, EventArgs e)
-        {
-            isX = false; // Controls who goes first, in this case O goes first
-            Xs_button.Enabled = false;
-            Os_button.Enabled = false;
-            Button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            button10.Enabled = true;
-            button11.Enabled = true;
-            button12.Enabled = true;
-            button13.Enabled = true;
-            button14.Enabled = true;
-            button15.Enabled = true;
-            button16.Enabled = true;
-            button17.Enabled = true;
-            button18.Enabled = true;
-            button19.Enabled = true;
-            button20.Enabled = true;
-            button21.Enabled = true;
-            button22.Enabled = true;
-            button23.Enabled = true;
-            button24.Enabled = true;
-            button25.Enabled = true;
-        }
+        //private void Xs_button_Click(object sender, EventArgs e)
+        //{
+        //    isX = true; // Controls who goes first, in this case X goes first
+        //    Xs_button.Enabled = false;
+        //    Os_button.Enabled = false;
+        //    Button1.Enabled = true;
+        //    button2.Enabled = true;
+        //    button3.Enabled = true;
+        //    button4.Enabled = true;
+        //    button5.Enabled = true;
+        //    button6.Enabled = true;
+        //    button7.Enabled = true;
+        //    button8.Enabled = true;
+        //    button9.Enabled = true;
+        //    button10.Enabled = true;
+        //    button11.Enabled = true;
+        //    button12.Enabled = true;
+        //    button13.Enabled = true;
+        //    button14.Enabled = true;
+        //    button15.Enabled = true;
+        //    button16.Enabled = true;
+        //    button17.Enabled = true;
+        //    button18.Enabled = true;
+        //    button19.Enabled = true;
+        //    button20.Enabled = true;
+        //    button21.Enabled = true;
+        //    button22.Enabled = true;
+        //    button23.Enabled = true;
+        //    button24.Enabled = true;
+        //    button25.Enabled = true;
+        //}
+        //private void Os_bttuon_Click(object sender, EventArgs e)
+        //{
+        //    isX = false; // Controls who goes first, in this case O goes first
+        //    Xs_button.Enabled = false;
+        //    Os_button.Enabled = false;
+        //    Button1.Enabled = true;
+        //    button2.Enabled = true;
+        //    button3.Enabled = true;
+        //    button4.Enabled = true;
+        //    button5.Enabled = true;
+        //    button6.Enabled = true;
+        //    button7.Enabled = true;
+        //    button8.Enabled = true;
+        //    button9.Enabled = true;
+        //    button10.Enabled = true;
+        //    button11.Enabled = true;
+        //    button12.Enabled = true;
+        //    button13.Enabled = true;
+        //    button14.Enabled = true;
+        //    button15.Enabled = true;
+        //    button16.Enabled = true;
+        //    button17.Enabled = true;
+        //    button18.Enabled = true;
+        //    button19.Enabled = true;
+        //    button20.Enabled = true;
+        //    button21.Enabled = true;
+        //    button22.Enabled = true;
+        //    button23.Enabled = true;
+        //    button24.Enabled = true;
+        //    button25.Enabled = true;
+        //}
 
-        private void resetButton_Click(object sender, EventArgs e)
-        {
-            InitializeComponent();
+        //private void resetButton_Click(object sender, EventArgs e)
+        //{
+        //    InitializeComponent();
 
-            Button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            button8.Enabled = false;
-            button9.Enabled = false;
-            button10.Enabled = false;
-            button11.Enabled = false;
-            button12.Enabled = false;
-            button13.Enabled = false;
-            button14.Enabled = false;
-            button15.Enabled = false;
-            button16.Enabled = false;
-            button17.Enabled = false;
-            button18.Enabled = false;
-            button19.Enabled = false;
-            button20.Enabled = false;
-            button21.Enabled = false;
-            button22.Enabled = false;
-            button23.Enabled = false;
-            button24.Enabled = false;
-            button25.Enabled = false;
-        }
+        //    Button1.Enabled = false;
+        //    button2.Enabled = false;
+        //    button3.Enabled = false;
+        //    button4.Enabled = false;
+        //    button5.Enabled = false;
+        //    button6.Enabled = false;
+        //    button7.Enabled = false;
+        //    button8.Enabled = false;
+        //    button9.Enabled = false;
+        //    button10.Enabled = false;
+        //    button11.Enabled = false;
+        //    button12.Enabled = false;
+        //    button13.Enabled = false;
+        //    button14.Enabled = false;
+        //    button15.Enabled = false;
+        //    button16.Enabled = false;
+        //    button17.Enabled = false;
+        //    button18.Enabled = false;
+        //    button19.Enabled = false;
+        //    button20.Enabled = false;
+        //    button21.Enabled = false;
+        //    button22.Enabled = false;
+        //    button23.Enabled = false;
+        //    button24.Enabled = false;
+        //    button25.Enabled = false;
+        //}
 
 
     }

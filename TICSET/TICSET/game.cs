@@ -6,27 +6,27 @@ using System.Windows.Forms;
 namespace gamePlay
 {
 
-    class gameSettings
-    {
-        public Player player1;          //First player
-        public Player player2;          //Second Player, these are in arbitrary order
-        public char PieceThatGoesFirst; //X or O, first player
-        public int difficulty;
+    //class gameSettings
+    //{
+    //    public Player player1;          //First player
+    //    public Player player2;          //Second Player, these are in arbitrary order
+    //    public char PieceThatGoesFirst; //X or O, first player
+    //    public int difficulty;
 
 
-        public gameSettings(Player p1, Player p2, char firstPiece, int diff)
-        { ///constructor
-            player1 = p1;
-            player2 = p2;
-            PieceThatGoesFirst = firstPiece;
-            difficulty = diff;
-        }
+    //    public gameSettings(Player p1, Player p2, char firstPiece, int diff)
+    //    { ///constructor
+    //        player1 = p1;
+    //        player2 = p2;
+    //        PieceThatGoesFirst = firstPiece;
+    //        difficulty = diff;
+    //    }
 
         
-    }
+    //}
 
 
-    class visualBoard
+    public class visualBoard
     {   //Deprecated byUsman Joe and Bryan on 4/10, will become Form1
         private Button[] buttonArray;
         public visualBoard(Button[] ba)
@@ -70,7 +70,7 @@ namespace gamePlay
 
 
     }
-    class virtualBoard
+    public class virtualBoard
     {
         /*
          * This class implements a virtual board. Whne complete, it should automatically log all moves whenever commitMove is called.
@@ -90,9 +90,10 @@ namespace gamePlay
 
         private char[] board = new char[25];
         private Game game;
-        private visualBoard vBoard;
-        public virtualBoard(visualBoard vb)
+        private Form1 vBoard;
+        public virtualBoard(Form1 vb, Game gameObj)
         {
+            game = gameObj;
             vBoard = vb; //bind virtual board to visual board
             for (int p = 0; p < 25; p++)
             {
@@ -105,7 +106,8 @@ namespace gamePlay
             //commits a move to the board and calls "log", a not-yet-implemented function to log the move in the database;
             //TODO: Can someone link this back to the UI so that It makes the move visible?
             board[pos] = Player.getGamePiece();
-            vBoard.makeMove(Player.getGamePiece(), pos); //display the move
+            MessageBox.Show("Computer is making moves");
+            vBoard.commitMove( pos,Player.getGamePiece()); //display the move
             game.Turnover(); //we are done making moves. Change turn to other player.
             //log();
         }
@@ -123,7 +125,7 @@ namespace gamePlay
         }
 
     }
-    class Player
+    public class Player
     {
         private string id;
         private char GamePiece;
@@ -168,45 +170,83 @@ namespace gamePlay
 
         }
     }
-    class Game
+    public class Game
     {
-        private virtualBoard GameBoard;
+        private virtualBoard virtualBoard;
         private Player player1;
         private Player player2;
         private string IDofPlayerMakingMove;
-        private gameSettings gs;
-        public Game(Player p1, Player p2, visualBoard vb)
-        {
-            player1 = p1;
-            player2 = p2;
-            GameBoard = new virtualBoard(vb);
-            GameBoard.bindGame(this);
-            IDofPlayerMakingMove = player1.getID();
-            player1.startTurn(GameBoard); //player one always goes first
+        private char PieceOfPlayerMakingMove;
+        private Form1 vb;
+        //private gameSettings gs;
+        
 
+        
+        public Game(Settings settings)
+        {
+            player1 = settings.player1;
+            player2 = settings.player2;
+            PieceOfPlayerMakingMove = settings.PieceThatGoesFirst;
+            vb = new Form1(settings, this);
+            
+            virtualBoard = new virtualBoard(vb, this);
+            if (settings.difficulty == 1 || settings.difficulty == 2)
+            {
+                //something here that says its a computer player
+            }
+            if (player1.getGamePiece() == PieceOfPlayerMakingMove)
+            {
+                IDofPlayerMakingMove = player1.getID();
+                player1.startTurn(virtualBoard);
+            }
+            else if (player2.getGamePiece() == PieceOfPlayerMakingMove)
+            {
+                IDofPlayerMakingMove = player2.getID();
+                player2.startTurn(virtualBoard);
+
+            }
+            
+            vb.Show();
+            
         }
         public void Turnover()
         {
             if (player1.getID() == IDofPlayerMakingMove)
             {
-                player2.startTurn(GameBoard);
+                player2.startTurn(virtualBoard);
                 IDofPlayerMakingMove = player2.getID();
             }
             else
             {
-                player1.startTurn(GameBoard);
+                player1.startTurn(virtualBoard);
                 IDofPlayerMakingMove = player1.getID();
             }
         }
         public void makeMove(Player p, int position)
-        {
+        { //might be obsolete
             if (p.getID() == IDofPlayerMakingMove)
             {
-                GameBoard.commitMove(p, position);
+                virtualBoard.commitMove(p, position);
                 Turnover();
             }
            
             
+
+
+        }
+        public void makeMove(int position)
+        {
+            if (player1.getID() == IDofPlayerMakingMove)
+            {
+                virtualBoard.commitMove(player1, position);
+                Turnover();
+            }
+            if (player2.getID() == IDofPlayerMakingMove)
+            {
+                virtualBoard.commitMove(player2, position);
+                Turnover();
+            }
+
 
 
         }
