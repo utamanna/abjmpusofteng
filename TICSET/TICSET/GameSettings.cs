@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using gamePlay;
-
+using AI;
 namespace TICSET
 {
     public partial class GameSettings : Form
@@ -36,8 +36,8 @@ namespace TICSET
             InitializeComponent();
             lbl_player_one.Text = player;
             p_one_username = player_username;
-            player_one = new Player(player_username, x, player_one_boolean);
-            player_two = new Player("Computer", o, player_two_boolean);
+            player_one = new HumanPlayer(player_username, x);
+            player_two = new computerPlayer(o);
         }
 
 
@@ -75,7 +75,7 @@ namespace TICSET
             lbl_player_two.Text = "Computer";
             image_keyboard.Visible = false;
             player_two_boolean = false;
-            player_two = new Player("Computer", o, player_two_boolean);
+            player_two = new computerPlayer(o);
         }
 
 

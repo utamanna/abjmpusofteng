@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using System.Data.SqlClient;
+using Database;
 
 namespace TICSET
 {
@@ -21,14 +22,12 @@ namespace TICSET
         // Call this constructor to redirect user to the
         // registration form with the username already filled
         // in when username is not found at the login screen
-        public RegistrationWindow(string username)
-        {
-            InitializeComponent();
-            tb_username.Text = username;
+        //public RegistrationWindow(string username)
+        //{
+        //    InitializeComponent();
+        //    tb_username.Text = username;
 
-        }
-
-        private SqlCeConnection connection;
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -81,34 +80,14 @@ namespace TICSET
 
             if (isFirstNameFull && isLastNameFull && isUserNameFull && isPasswordFull)
             {
-                // Add the user to the database
-                try
+                DatabaseHelper myHelper = new DatabaseHelper();
+                if (myHelper.insertUserinStatisticTable(tb_username.Text) && myHelper.insertUserinUserTable(tb_first_name.Text, tb_last_name.Text, tb_username.Text, tb_password.Text))
                 {
-                    string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
-                    using (SqlCeConnection connection = new SqlCeConnection(connectionString))
-                    using (SqlCeCommand command = new SqlCeCommand("INSERT INTO [user] (username, password, first_name, last_name) VALUES (@username, @password, @first_name, @last_name)", connection))
-                    {
-                       // command.CommandText = "INSERT INTO user (username, password, first_name, last_name) VALUES (@username, @password, @first_name, @last_name)";
-
-                        command.Parameters.AddWithValue("@username", tb_username.Text);
-                        command.Parameters.AddWithValue("@password", tb_password.Text);
-                        command.Parameters.AddWithValue("@first_name", tb_first_name.Text);
-                        command.Parameters.AddWithValue("@last_name", tb_last_name.Text);
-
-                        connection.Open();
-                        command.Connection = connection;
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.ToString());
-                }
-                LoginWindow loginWindow = new LoginWindow();
-                this.Visible = false;
-                loginWindow.ShowDialog();
+                    LoginWindow loginWindow = new LoginWindow();
+                    this.Visible = false;
+                    loginWindow.ShowDialog();
+                    myHelper.Close();
+                }                
             }
         }
 

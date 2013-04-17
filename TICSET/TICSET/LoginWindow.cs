@@ -6,9 +6,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+using Database;
 
 namespace TICSET
 {
@@ -16,12 +15,6 @@ namespace TICSET
     {
         // Variables
         string player_one, player_one_username;
-
-
-        // SQL connection
-        string connectionString = @"Data Source=C:\Users\Usman\Documents\GitHub\abjmpusofteng\TICSET\TICSET\Users.sdf";
-        private SqlCeConnection connection;
-
         public LoginWindow()
         {
             InitializeComponent();
@@ -72,41 +65,19 @@ namespace TICSET
 
             if( isUsernameFull && isPasswordFull )
             {
-                // When the user name and password is filled in,
-                // connect to the database and check the username
-                // and password agaisnt the database. If a match is
-                // found get the first name and last name and concatenate 
-                // it and show the GameSettings form.
-                try
+                DatabaseHelper myHelper = new DatabaseHelper();
+                if (myHelper.CheckLogin(tb_username.Text, tb_password.Text))
                 {
-                    connection = new SqlCeConnection(connectionString);
-                    connection.Open();
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.ToString());
-                }
-                SqlCeCommand sc = new SqlCeCommand("SELECT * FROM [user] WHERE username='" +
-                                                   tb_username.Text + "' AND password='" +
-                                                   tb_password.Text + "'", connection);
-                SqlCeDataReader reader = null;
-                reader = sc.ExecuteReader();
-                if (reader.Read())
-                {
-                    player_one_username = reader.GetString(0);
-                    player_one = reader.GetString(2);
-                    player_one += " " + reader.GetString(3);
-                    this.Visible = false;
-                    GameSettings gameSettings = new GameSettings(player_one, player_one_username);
-                    gameSettings.Show();
                     
+                    GameSettings gameSettings = new GameSettings(myHelper.getUsersFullName(tb_username.Text), tb_username.Text);
+                    this.Visible = false;
+                    gameSettings.Show();
+                    myHelper.Close();
                 }
                 else
                 {
                     MessageBox.Show("Invalid username or password.");
                 }
-
-                connection.Close();
             }
 
 
