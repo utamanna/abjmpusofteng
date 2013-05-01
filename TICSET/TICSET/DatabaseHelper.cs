@@ -123,6 +123,17 @@ namespace Database
 
         public string Leaderboard()
         {
+            try
+            {
+                using( SqlCeCommand command = new SqlCeCommand("", connection))
+                {
+
+                }
+            }
+            catch(Exception e)
+            {
+                return "No Data Available."
+            }
             return "";
         }
 

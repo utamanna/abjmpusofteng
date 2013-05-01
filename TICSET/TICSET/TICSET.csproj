@@ -90,6 +90,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="game.cs" />
+    <Compile Include="Gameover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gameover.Designer.cs">
+      <DependentUpon>Gameover.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gameover.resx">
+      <DependentUpon>Gameover.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameSettings.resx">
       <DependentUpon>GameSettings.cs</DependentUpon>
