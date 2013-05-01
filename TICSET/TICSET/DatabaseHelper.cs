@@ -132,7 +132,7 @@ namespace Database
             }
             catch(Exception e)
             {
-                return "No Data Available."
+                return "No Data Available.";
             }
             return "";
         }
