@@ -6,7 +6,7 @@ using gamePlay;
 
 namespace TICSET
 {
-    class Settings
+    public class Settings
     {
 
         public Player player1;          //First player

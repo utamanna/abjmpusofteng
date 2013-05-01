@@ -13,21 +13,25 @@ using System.Windows.Forms;
 
 namespace AI
 {
-    class winningCombo {
+    class winningCombo
+    {
         private int[] positions;
-        public winningCombo(int a, int b, int c, int d) 
+        public winningCombo(int a, int b, int c, int d)
         {
-            positions = new int[4] {a, b, c, d};
+            positions = new int[4] { a, b, c, d };
         }
-        public bool hasPosition(int pos) {
-            if (positions[0] == pos || positions[1] == pos || positions[2] == pos || positions[3] == pos ) return true;
+        public bool hasPosition(int pos)
+        {
+            if (positions[0] == pos || positions[1] == pos || positions[2] == pos || positions[3] == pos) return true;
             else return false;
         }
-        public int[] getPositions() 
+        public int[] getPositions()
         {
             return positions;
         }
-        public int getScore(virtualBoard board, char gamePiece, int weight) {
+        public int getScore(virtualBoard board, char gamePiece, int weight)
+        {
+            //MessageBox.Show("Using piece: " + gamePiece);
             /* checks current combo to see what score it has
              * score is equal to the number of times gamePiece shows up in the combo, multiplied by weight,
              * UNLESS the other piece shows up.
@@ -36,23 +40,29 @@ namespace AI
             int unadjustedScore = 0;
             bool blocked = false;
             char otherPiece = ' ';  //arbitrary value for otherpiece. 
-            if (gamePiece == 'X') otherPiece='O';   
+            if (gamePiece == 'X') otherPiece = 'O';
             else if (gamePiece == 'O') otherPiece = 'X';
             else MessageBox.Show("Piece Error in winningCombo.getScore; using piece: " + gamePiece);  //used if piece is neither X or O
-            
-            for (int x=0; x<4; x++) {                                                           //Check each position
-                if (board.getPieceAtPosition(positions[x])==gamePiece) unadjustedScore++;       //if it has gamePiece in it, increment unadjusted score
-                else if (board.getPieceAtPosition(positions[x]) == otherPiece) blocked=true;    //if it has the otherPiece, set blocked.
+
+            for (int x = 0; x < 4; x++)
+            { //Check each position
+                int pos = positions[x];
+                if (board.getPieceAtPosition(pos) == gamePiece) unadjustedScore++;       //if it has gamePiece in it, increment unadjusted score
+                else if (board.getPieceAtPosition(pos) == otherPiece) blocked = true;    //if it has the otherPiece, set blocked.
             }
 
             if (blocked) return 0;                                          //If the combo is blocked, we don't want to move there, so return 0
-            else return unadjustedScore*weight;                             //multiply by weight.
+            else return unadjustedScore * unadjustedScore * weight;                             //multiply by weight.
         }
     }
 
     class winningComboList
     {
         private winningCombo[] combos = new winningCombo[28];
+        public winningComboList()
+        {
+            buildList();
+        }
         private void buildList()
         {
             /* virtualBoard Layout:
@@ -106,13 +116,15 @@ namespace AI
             int index = 0;
             for (int x = 0; x < 28; x++)
             {
-                if (combos[x].hasPosition(pos))
+                winningCombo c = combos[x];
+                if (c.hasPosition(pos))
                 {               //on the combolist array, check if each one has that position
                     results[index] = combos[x];                 //if so, add it
+                    index++;
                 }
             }
-            winningCombo[] ret = new winningCombo[index + 1];     //Now that we know how many there are, build a correct-sized array
-            for (int i = 0; i <= index; i++)
+            winningCombo[] ret = new winningCombo[index];     //Now that we know how many there are, build a correct-sized array
+            for (int i = 0; i < index; i++)
             {                       // and add each winningCombo to it
                 ret[i] = results[i];
             }
@@ -121,25 +133,35 @@ namespace AI
 
         }
     }
-    class computerPlayer  :   Player
+    class computerPlayer : Player
     {
         /*
          * This class allows us to call "new computerPlayer("X")" when a 1player game is started. 
         */
         //private char computersGamePiece; //Set to X or O
+        private int difficulty;
+        private int turnCount;
         private string id;
         private char GamePiece;
         private bool isHuman;
         private winningComboList WCL;
-        public computerPlayer(char piece) :base("AI", piece, false)
+        public computerPlayer(char piece)
+            : base("AI", piece, false)
         {
+            GamePiece = piece;
             this.id = "AI";
             this.isHuman = false;
-            winningComboList WCL = new winningComboList();                      //Build the Winning Combo List
+            turnCount = 0;
+            WCL = new winningComboList();                      //Build the Winning Combo List
+
         }
-        int[] calculateDefensiveMoves(virtualBoard currentBoard) {
-            
-            char humansGamePiece=' ';                                           //In Defensive check, we need to check against the other player's piece
+        public override void setDifficulty(int dif)
+        {
+            difficulty = dif;
+        }
+        int[] calculateDefensiveMoves(virtualBoard currentBoard)
+        {
+            char humansGamePiece = ' ';                                           //In Defensive check, we need to check against the other player's piece
             if (GamePiece == 'X') humansGamePiece = 'O';
             else if (GamePiece == 'O') humansGamePiece = 'X';
             else MessageBox.Show("Piece Error in winningCombo.getScore; using piece: " + GamePiece);  //used if piece is neither X or O
@@ -152,7 +174,7 @@ namespace AI
                 {
 
                     winningCombo[] WCs = WCL.getCombosWithPosition(pos);            //Get all the combos that intersect that position
-                    int score = 0;
+                    int score = 5;
                     foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
                     {
                         score += WC.getScore(currentBoard, humansGamePiece, 5);  //add the score
@@ -168,51 +190,77 @@ namespace AI
         {
             winningComboList WCL = new winningComboList();                      //Build the Winning Combo List
             int[] results = new int[25];
-            for (int x = 0; x < 25; x++)  results[x] = 0; // set result set to 0
-           
+            for (int x = 0; x < 25; x++) results[x] = 0; // set result set to 0
+
             for (int pos = 0; pos < 25; pos++)                                  //loop through each position
             {
-                winningCombo[] WCs = WCL.getCombosWithPosition(pos);            //Get all the combos that intersect that position
-                int score = 0;
-                foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
+                if (currentBoard.getPieceAtPosition(pos) == 'N') //Only loop check it if the spot it empty.
                 {
-                    score += WC.getScore(currentBoard, GamePiece, 5);  //add the score
-                    //TODO: Change 5 to be the correct weight
+                    winningCombo[] WCs = WCL.getCombosWithPosition(pos);            //Get all the combos that intersect that position
+                    int score = 1;
+                    foreach (winningCombo WC in WCs)                                // loop through the intersecting combos
+                    {
+                        score += WC.getScore(currentBoard, GamePiece, 5);  //add the score
+                        //TODO: Change 5 to be the correct weight
+                    }
+                    results[pos] = score;                                           //set the score at that position
                 }
-                results[pos] = score;                                           //set the score at that position
             }
 
             return results;
 
         }
 
-        public void startTurn(virtualBoard GameBoard)
+        public override void startTurn(Game game)
         {
-            //call this function at the start of every computer turn. This will kick off the AI and commit a move.
-            int[] DefensiveMoves =new int[25];   
-            int[] OffensiveMoves = new int[25];
-            
 
-            DefensiveMoves = calculateDefensiveMoves(GameBoard);
-            OffensiveMoves = calculateOffensiveMoves(GameBoard);
-
-            int bestMoveIndex = 0;
-            int bestMoveValue = 0;
-
-            for (int index = 0; index < 25; index++)
-            {
-                //loop through to find the best move
-                if (DefensiveMoves[index] + OffensiveMoves[index] > bestMoveValue)      //if this move is better,
-                {                                                                       
-                    bestMoveIndex = index;                                              //set the best move to the index
-                    bestMoveValue = DefensiveMoves[index] + OffensiveMoves[index];      //and the best move value to the value
+            if (difficulty == 0 && turnCount % 3 == 0)
+            {//if easy, and it is the 3rd turn
+                Random rand = new Random(); //make a random move
+                bool good_move = false;
+                int curMove;
+                while (!good_move)
+                {
+                    curMove = rand.Next(0, 25);
+                    if (game.virtualBoard.getPieceAtPosition(curMove) == 'N') //make sure it is a free space
+                    {
+                        good_move = true;
+                        game.makeMove(curMove);
+                    }
                 }
+
+
+                turnCount++;
             }
+            else
+            {
 
-            GameBoard.commitMove(this, bestMoveIndex);                    //When we have the best move, commit it
+                //call this function at the start of every computer turn. This will kick off the AI and commit a move.
+                int[] DefensiveMoves = new int[25];
+                int[] OffensiveMoves = new int[25];
 
+
+                DefensiveMoves = calculateDefensiveMoves(game.virtualBoard);
+                OffensiveMoves = calculateOffensiveMoves(game.virtualBoard);
+                //MessageBox.Show("Computer is making moves");
+                int bestMoveIndex = 0;
+                int bestMoveValue = 0;
+
+                for (int index = 0; index < 25; index++)
+                {
+                    //loop through to find the best move
+                    if (DefensiveMoves[index] + OffensiveMoves[index] > bestMoveValue)      //if this move is better,
+                    {
+                        bestMoveIndex = index;                                              //set the best move to the index
+                        bestMoveValue = DefensiveMoves[index] + OffensiveMoves[index];      //and the best move value to the value
+                    }
+                }
+                //MessageBox.Show("Computer move: " + bestMoveIndex);
+                game.makeMove(bestMoveIndex);                    //When we have the best move, commit it
+                turnCount++;
+            }
         }
 
-        
+
     }
 }
