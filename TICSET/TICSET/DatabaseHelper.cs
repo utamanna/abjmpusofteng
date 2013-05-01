@@ -145,7 +145,7 @@ namespace Database
                     int i = 1;
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        leaderboard_string[0] += i + ".";
+                        leaderboard_string[0] += i + ".\n";
                         leaderboard_string[1] += row["username"].ToString() + "\n";
                         leaderboard_string[2] += row["wins"].ToString() + "\n";
                         leaderboard_string[3] += row["losses"].ToString() + "\n";
