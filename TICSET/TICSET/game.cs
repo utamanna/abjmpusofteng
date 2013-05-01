@@ -6,25 +6,6 @@ using System.Windows.Forms;
 namespace gamePlay
 {
 
-    //class gameSettings
-    //{
-    //    public Player player1;          //First player
-    //    public Player player2;          //Second Player, these are in arbitrary order
-    //    public char PieceThatGoesFirst; //X or O, first player
-    //    public int difficulty;
-
-
-    //    public gameSettings(Player p1, Player p2, char firstPiece, int diff)
-    //    { ///constructor
-    //        player1 = p1;
-    //        player2 = p2;
-    //        PieceThatGoesFirst = firstPiece;
-    //        difficulty = diff;
-    //    }
-
-        
-    //}
-
 
     public class virtualBoard
     {
@@ -258,6 +239,7 @@ namespace gamePlay
         
         public Game(Settings settings)
         {
+            vb = new Form1(settings, this);
             player1 = settings.player1;
             player2 = settings.player2;
             //MessageBox.Show(player2.getID());
@@ -274,7 +256,7 @@ namespace gamePlay
                 currentPlayer = player2;
             }
 
-            vb = new Form1(settings, this);
+            
             
             virtualBoard = new virtualBoard(vb, this);
             if (settings.difficulty == 1 || settings.difficulty == 2)
