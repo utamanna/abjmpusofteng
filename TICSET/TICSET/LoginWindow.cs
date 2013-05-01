@@ -30,10 +30,14 @@ namespace TICSET
         private void btn_login_Click(object sender, EventArgs e)
         {
             bool isUsernameFull = false, isPasswordFull = false;
+<<<<<<< HEAD
             /*========================================
              *got frustrated, DB is not working for me
              *Delete Until: 
             *=========================================*/ 
+=======
+            //got frustrated, DB is not working for me
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
             if (tb_username.Text == "joseph")
             {
                 player_one_username = "jpk";
@@ -43,9 +47,12 @@ namespace TICSET
                 GameSettings gameSettings = new GameSettings(player_one, player_one_username);
                 gameSettings.Show();
             }
+<<<<<<< HEAD
             /*==========================================HERE*/
 
 
+=======
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
             // Validate that username is not empty
             if (!(string.IsNullOrEmpty(tb_username.Text)))
             {

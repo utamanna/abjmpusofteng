@@ -278,21 +278,28 @@ namespace gamePlay
             {
                 currentPlayer = player2;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
             }
 
             vb = new Form1(settings, this);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             } 
             //Usman: the rest of this function can be whatever code you need to kick off the visual board (UI)
             Form1 vb = new Form1();
             
 =======
+=======
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
             virtualBoard = new virtualBoard(vb, this);
             if (settings.difficulty == 1 || settings.difficulty == 2)
             {
                 //something here that says its a computer player
             }
+<<<<<<< HEAD
 =======
             }
 
@@ -305,6 +312,11 @@ namespace gamePlay
             }
 >>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
             currentPlayer.startTurn(this);
+=======
+            currentPlayer.startTurn(this);
+
+            vb.Show();
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
 
             vb.Show();
 
@@ -316,6 +328,10 @@ namespace gamePlay
 >>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
 =======
 >>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
+        }
+        public void defaultTurn()
+        {
+            currentPlayer.startTurn(this);
         }
         public void Turnover()
         {

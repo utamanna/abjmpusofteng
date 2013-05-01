@@ -60,6 +60,7 @@ namespace TICSET
             InitializeComponent();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             game = gam;
             settings = gs;
 
@@ -81,6 +82,8 @@ namespace TICSET
 
 
 =======
+=======
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
         }
         public void drawMove(int pos, char piece)
         {
@@ -98,6 +101,9 @@ namespace TICSET
         }
 
 
+<<<<<<< HEAD
+>>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
+=======
 >>>>>>> 5a2b97b7a2390f5beb4d75a8f3de030e4e0b0e88
         private void button28_Click(object sender, EventArgs e)
         {
