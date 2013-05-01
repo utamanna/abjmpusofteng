@@ -167,5 +167,10 @@ namespace TICSET
                 Application.OpenForms[i].Close();
             }
         }
+
+        private void go_Click(object sender, EventArgs e)
+        {
+            Gameover go = Gameover();
+        }
     }
 }

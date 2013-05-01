@@ -121,20 +121,47 @@ namespace Database
             }
         }
 
+        //nt isThereAMatchingRow = dataTable.Rows.Count;
+        //    if (isThereAMatchingRow == 1)
+        //    {
+        //        DataRow row = dataTable.Rows[0];
+        //        users_full_name = row["first_name"].ToString();
+        //        users_full_name += " " + row["last_name"].ToString();
+        //        return users_full_name;
+        //    }
         public string Leaderboard()
         {
+            string leaderboard_string = "";
             try
             {
-                using( SqlCeCommand command = new SqlCeCommand("", connection))
+                using( SqlCeCommand command = new SqlCeCommand("SELECT username, wins, losses FROM [statistics] ORDER BY wins ASC", connection))
                 {
+                    reader = null;
+                    reader = command.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    DataTable sortedTable = new DataTable();
+                    dataTable.Load(reader);
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        leaderboard_string = "\t\t";
+                        leaderboard_string += row["username"].ToString();
+                        leaderboard_string += "\t\t";
+                        leaderboard_string += row["wins"].ToString();
+                        leaderboard_string += "\t\t";
+                        leaderboard_string += row["losses"].ToString();
+                        leaderboard_string += "\n";
 
+                    }
+
+                    return leaderboard_string;
+                   
                 }
             }
             catch(Exception e)
             {
                 return "No Data Available.";
             }
-            return "";
+            
         }
 
         public void score(Player player_one, Player player_two, char who_won)

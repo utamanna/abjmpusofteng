@@ -63,6 +63,7 @@
             this.bar8 = new System.Windows.Forms.PictureBox();
             this.label_1 = new System.Windows.Forms.Label();
             this.button28 = new System.Windows.Forms.Button();
+            this.go = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar3)).BeginInit();
@@ -444,14 +445,24 @@
             this.button28.BackColor = System.Drawing.Color.Red;
             this.button28.Font = new System.Drawing.Font("Century Gothic", 22F, System.Drawing.FontStyle.Bold);
             this.button28.ForeColor = System.Drawing.Color.White;
-            this.button28.Location = new System.Drawing.Point(534, 433);
+            this.button28.Location = new System.Drawing.Point(523, 433);
             this.button28.Margin = new System.Windows.Forms.Padding(2);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(220, 57);
+            this.button28.Size = new System.Drawing.Size(96, 57);
             this.button28.TabIndex = 29;
             this.button28.Text = "Exit";
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // go
+            // 
+            this.go.Location = new System.Drawing.Point(625, 433);
+            this.go.Name = "go";
+            this.go.Size = new System.Drawing.Size(75, 23);
+            this.go.TabIndex = 64;
+            this.go.Text = "button26";
+            this.go.UseVisualStyleBackColor = true;
+            this.go.Click += new System.EventHandler(this.go_Click);
             // 
             // Form1
             // 
@@ -459,6 +470,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 504);
             this.ControlBox = false;
+            this.Controls.Add(this.go);
             this.Controls.Add(this.label_1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.bar8);
@@ -547,6 +559,7 @@
         private System.Windows.Forms.PictureBox bar8;
         private System.Windows.Forms.Label label_1;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button go;
     }
 }
 
