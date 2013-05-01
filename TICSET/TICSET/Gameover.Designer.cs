@@ -33,15 +33,13 @@
             this.lbl_won = new System.Windows.Forms.Label();
             this.btn_gameover_exit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_leaderboard_number = new System.Windows.Forms.Label();
             this.lbl_leaderboard_username = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbl_leaderboard_wins = new System.Windows.Forms.Label();
             this.lbl_leaderboard_losses = new System.Windows.Forms.Label();
-            this.lbl_leaderboard_number = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Result.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Result
@@ -91,8 +89,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.lbl_leaderboard_losses);
+            this.groupBox1.Controls.Add(this.lbl_leaderboard_wins);
+            this.groupBox1.Controls.Add(this.lbl_leaderboard_username);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lbl_leaderboard_number);
             this.groupBox1.Location = new System.Drawing.Point(18, 120);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -102,6 +103,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Leaderboard";
             // 
+            // lbl_leaderboard_number
+            // 
+            this.lbl_leaderboard_number.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_leaderboard_number.Location = new System.Drawing.Point(8, 62);
+            this.lbl_leaderboard_number.Name = "lbl_leaderboard_number";
+            this.lbl_leaderboard_number.Size = new System.Drawing.Size(28, 158);
+            this.lbl_leaderboard_number.TabIndex = 0;
+            this.lbl_leaderboard_number.Text = "#";
+            this.lbl_leaderboard_number.Click += new System.EventHandler(this.lbl_leaderboard_Click);
+            // 
+            // lbl_leaderboard_username
+            // 
+            this.lbl_leaderboard_username.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.lbl_leaderboard_username.Location = new System.Drawing.Point(33, 62);
+            this.lbl_leaderboard_username.Name = "lbl_leaderboard_username";
+            this.lbl_leaderboard_username.Size = new System.Drawing.Size(205, 158);
+            this.lbl_leaderboard_username.TabIndex = 2;
+            this.lbl_leaderboard_username.Text = "User Name";
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
@@ -109,66 +129,31 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(445, 34);
             this.label1.TabIndex = 1;
-            this.label1.Text = "#      Name                  Wins          Losses";
-            // 
-            // lbl_leaderboard_username
-            // 
-            this.lbl_leaderboard_username.AutoSize = true;
-            this.lbl_leaderboard_username.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
-            this.lbl_leaderboard_username.Location = new System.Drawing.Point(47, 8);
-            this.lbl_leaderboard_username.Name = "lbl_leaderboard_username";
-            this.lbl_leaderboard_username.Size = new System.Drawing.Size(117, 23);
-            this.lbl_leaderboard_username.TabIndex = 2;
-            this.lbl_leaderboard_username.Text = "User Name";
+            this.label1.Text = "#          Name                Wins            Losses";
             // 
             // lbl_leaderboard_wins
             // 
-            this.lbl_leaderboard_wins.AutoSize = true;
             this.lbl_leaderboard_wins.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
-            this.lbl_leaderboard_wins.Location = new System.Drawing.Point(233, 8);
+            this.lbl_leaderboard_wins.Location = new System.Drawing.Point(244, 62);
             this.lbl_leaderboard_wins.Name = "lbl_leaderboard_wins";
-            this.lbl_leaderboard_wins.Size = new System.Drawing.Size(52, 23);
+            this.lbl_leaderboard_wins.Size = new System.Drawing.Size(72, 158);
             this.lbl_leaderboard_wins.TabIndex = 3;
             this.lbl_leaderboard_wins.Text = "wins";
             // 
             // lbl_leaderboard_losses
             // 
-            this.lbl_leaderboard_losses.AutoSize = true;
             this.lbl_leaderboard_losses.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
-            this.lbl_leaderboard_losses.Location = new System.Drawing.Point(343, 8);
+            this.lbl_leaderboard_losses.Location = new System.Drawing.Point(354, 62);
             this.lbl_leaderboard_losses.Name = "lbl_leaderboard_losses";
-            this.lbl_leaderboard_losses.Size = new System.Drawing.Size(68, 23);
+            this.lbl_leaderboard_losses.Size = new System.Drawing.Size(72, 158);
             this.lbl_leaderboard_losses.TabIndex = 4;
-            this.lbl_leaderboard_losses.Text = "losses";
-            // 
-            // lbl_leaderboard_number
-            // 
-            this.lbl_leaderboard_number.AutoSize = true;
-            this.lbl_leaderboard_number.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
-            this.lbl_leaderboard_number.Location = new System.Drawing.Point(5, 8);
-            this.lbl_leaderboard_number.Name = "lbl_leaderboard_number";
-            this.lbl_leaderboard_number.Size = new System.Drawing.Size(22, 23);
-            this.lbl_leaderboard_number.TabIndex = 0;
-            this.lbl_leaderboard_number.Text = "#";
-            this.lbl_leaderboard_number.Click += new System.EventHandler(this.lbl_leaderboard_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.lbl_leaderboard_losses);
-            this.panel1.Controls.Add(this.lbl_leaderboard_username);
-            this.panel1.Controls.Add(this.lbl_leaderboard_wins);
-            this.panel1.Controls.Add(this.lbl_leaderboard_number);
-            this.panel1.Location = new System.Drawing.Point(12, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(446, 165);
-            this.panel1.TabIndex = 5;
+            this.lbl_leaderboard_losses.Text = "wins";
             // 
             // Gameover
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 353);
+            this.ClientSize = new System.Drawing.Size(495, 357);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_gameover_exit);
             this.Controls.Add(this.Result);
@@ -178,8 +163,6 @@
             this.Text = "Gameover";
             this.Result.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -191,11 +174,10 @@
         private System.Windows.Forms.Label lbl_won;
         private System.Windows.Forms.Button btn_gameover_exit;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbl_leaderboard_number;
+        private System.Windows.Forms.Label lbl_leaderboard_username;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_leaderboard_losses;
         private System.Windows.Forms.Label lbl_leaderboard_wins;
-        private System.Windows.Forms.Label lbl_leaderboard_username;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbl_leaderboard_number;
     }
 }
