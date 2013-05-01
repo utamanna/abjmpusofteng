@@ -114,6 +114,7 @@ namespace TICSET
             // MAKE A SETTINGS OBJECT
             // =======================
             settings = new Settings(player_one, player_two, whoGoesFirst, difficulty);
+            this.Visible = false;
 
             Game game = new Game(settings);
 

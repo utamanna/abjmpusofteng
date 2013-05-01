@@ -139,6 +139,8 @@ namespace AI
          * This class allows us to call "new computerPlayer("X")" when a 1player game is started. 
         */
         //private char computersGamePiece; //Set to X or O
+        private int difficulty;
+        private int turnCount;
         private string id;
         private char GamePiece;
         private bool isHuman;
@@ -149,7 +151,13 @@ namespace AI
             GamePiece = piece;
             this.id = "AI";
             this.isHuman = false;
+            turnCount = 0;
             WCL = new winningComboList();                      //Build the Winning Combo List
+
+        }
+        public override void setDifficulty(int dif)
+        {
+            difficulty = dif;
         }
         int[] calculateDefensiveMoves(virtualBoard currentBoard)
         {
@@ -206,29 +214,51 @@ namespace AI
         public override void startTurn(Game game)
         {
 
-            //call this function at the start of every computer turn. This will kick off the AI and commit a move.
-            int[] DefensiveMoves = new int[25];
-            int[] OffensiveMoves = new int[25];
-
-
-            DefensiveMoves = calculateDefensiveMoves(game.virtualBoard);
-            OffensiveMoves = calculateOffensiveMoves(game.virtualBoard);
-            //MessageBox.Show("Computer is making moves");
-            int bestMoveIndex = 0;
-            int bestMoveValue = 0;
-
-            for (int index = 0; index < 25; index++)
-            {
-                //loop through to find the best move
-                if (DefensiveMoves[index] + OffensiveMoves[index] > bestMoveValue)      //if this move is better,
+            if (difficulty == 0 && turnCount % 3 == 0)
+            {//if easy, and it is the 3rd turn
+                Random rand = new Random(); //make a random move
+                bool good_move = false;
+                int curMove;
+                while (!good_move)
                 {
-                    bestMoveIndex = index;                                              //set the best move to the index
-                    bestMoveValue = DefensiveMoves[index] + OffensiveMoves[index];      //and the best move value to the value
+                    curMove = rand.Next(0, 25);
+                    if (game.virtualBoard.getPieceAtPosition(curMove) == 'N') //make sure it is a free space
+                    {
+                        good_move = true;
+                        game.makeMove(curMove);
+                    }
                 }
-            }
-            //MessageBox.Show("Computer move: " + bestMoveIndex);
-            game.makeMove(bestMoveIndex);                    //When we have the best move, commit it
 
+
+                turnCount++;
+            }
+            else
+            {
+
+                //call this function at the start of every computer turn. This will kick off the AI and commit a move.
+                int[] DefensiveMoves = new int[25];
+                int[] OffensiveMoves = new int[25];
+
+
+                DefensiveMoves = calculateDefensiveMoves(game.virtualBoard);
+                OffensiveMoves = calculateOffensiveMoves(game.virtualBoard);
+                //MessageBox.Show("Computer is making moves");
+                int bestMoveIndex = 0;
+                int bestMoveValue = 0;
+
+                for (int index = 0; index < 25; index++)
+                {
+                    //loop through to find the best move
+                    if (DefensiveMoves[index] + OffensiveMoves[index] > bestMoveValue)      //if this move is better,
+                    {
+                        bestMoveIndex = index;                                              //set the best move to the index
+                        bestMoveValue = DefensiveMoves[index] + OffensiveMoves[index];      //and the best move value to the value
+                    }
+                }
+                //MessageBox.Show("Computer move: " + bestMoveIndex);
+                game.makeMove(bestMoveIndex);                    //When we have the best move, commit it
+                turnCount++;
+            }
         }
 
 

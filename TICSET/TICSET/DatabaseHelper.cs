@@ -129,27 +129,27 @@ namespace Database
         //        users_full_name += " " + row["last_name"].ToString();
         //        return users_full_name;
         //    }
-        public string Leaderboard()
+        public string[] Leaderboard()
         {
-            string leaderboard_string = "";
+            string[] leaderboard_string = new string[6];
+            string[] leaderboard_error = new string[1];
             try
             {
-                using( SqlCeCommand command = new SqlCeCommand("SELECT username, wins, losses FROM [statistics] ORDER BY wins ASC", connection))
+                using (SqlCeCommand command = new SqlCeCommand("SELECT username, wins, losses FROM [statistics] ORDER BY wins DESC", connection))
                 {
                     reader = null;
                     reader = command.ExecuteReader();
                     DataTable dataTable = new DataTable();
                     DataTable sortedTable = new DataTable();
                     dataTable.Load(reader);
+                    int i = 1;
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        leaderboard_string = "\t\t";
-                        leaderboard_string += row["username"].ToString();
-                        leaderboard_string += "\t\t";
-                        leaderboard_string += row["wins"].ToString();
-                        leaderboard_string += "\t\t";
-                        leaderboard_string += row["losses"].ToString();
-                        leaderboard_string += "\n";
+                        leaderboard_string[0] += i + ".";
+                        leaderboard_string[1] += row["username"].ToString() + "\n";
+                        leaderboard_string[2] += row["wins"].ToString() + "\n";
+                        leaderboard_string[3] += row["losses"].ToString() + "\n";
+                        i++;
 
                     }
 
@@ -159,7 +159,7 @@ namespace Database
             }
             catch(Exception e)
             {
-                return "No Data Available.";
+                return leaderboard_error;
             }
             
         }
@@ -167,29 +167,98 @@ namespace Database
         public void score(Player player_one, Player player_two, char who_won)
         {
             string player_one_username, player_two_username;
+            int player_one_wins, player_one_losses, player_two_wins, player_two_losses;
             player_one_username = player_one.getID(); // Get player one username
             player_two_username = player_two.getID(); // Get player two username
+
+            // =============================================
+            // GET player one information from the database
+            // =============================================
+            SqlCeCommand command_for_player_one = new SqlCeCommand("SELECT username, wins, losses FROM [statistics] WHERE username='" +
+                                                           player_one_username + "'", connection);
+
+            reader = null;
+            reader = command_for_player_one.ExecuteReader();
+            DataTable data_table_player_one = new DataTable();
+            data_table_player_one.Load(reader);
+            DataRow row = data_table_player_one.Rows[0];
+            player_one_wins = Convert.ToInt16(row["wins"]);
+            player_one_losses =  Convert.ToInt16(row["losses"]);
+            // =============================================
+            // END player one information from the database
+            // =============================================
+
+            // =============================================
+            // GET player two information from the database
+            // =============================================
+            SqlCeCommand command_for_player_two = new SqlCeCommand("SELECT username, wins, losses FROM [statistics] WHERE username='" +
+                                                           player_two_username + "'", connection);
+
+            reader = null;
+            reader = command_for_player_two.ExecuteReader();
+            DataTable data_table_player_two = new DataTable();
+            data_table_player_two.Load(reader);
+            DataRow row1 = data_table_player_two.Rows[0];
+            player_two_wins = Convert.ToInt16(row1["wins"]);
+            player_two_losses = Convert.ToInt16(row1["losses"]);
+            // =============================================
+            // END player two information from the database
+            // =============================================
+
+
 
             // Update player one wins/losses based
             // on if they won or lost
             if (player_one.getGamePiece() == who_won)
             {
-                // Code to increment player one's wins
+                player_one_wins++;
+                using(SqlCeCommand command = new SqlCeCommand("UPDATE [statistics] SET [wins] = @wins, [losses] = @losses" +
+                    " WHERE username='" + player_one_username + "'", connection))
+                {
+                    command.Parameters.AddWithValue("@wins", player_one_wins);
+                    command.Parameters.AddWithValue("@losses", player_one_losses);
+
+                    int rows = command.ExecuteNonQuery();
+                }
             }
             else
             {
-                // Code to increment player one's losses
+                using (SqlCeCommand command = new SqlCeCommand("UPDATE [statistics] SET [wins] = @wins, [losses] = @losses" +
+                   " WHERE username='" + player_one_username + "'", connection))
+                {
+                    player_one_losses++;
+                    command.Parameters.AddWithValue("@wins", player_one_wins);
+                    command.Parameters.AddWithValue("@losses", player_one_losses);
+
+                    int rows = command.ExecuteNonQuery();
+                }
             }
 
             // Update player one wins/losses based
             // on if they won or lost
             if (player_two.getGamePiece() == who_won)
             {
-                // Code to imcrement player two's wins
+                player_two_wins++;
+                using (SqlCeCommand command = new SqlCeCommand("UPDATE [statistics] SET [wins] = @wins, [losses] = @losses" +
+                    " WHERE username='" + player_two_username + "'", connection))
+                {
+                    command.Parameters.AddWithValue("@wins", player_two_wins);
+                    command.Parameters.AddWithValue("@losses", player_two_losses);
+
+                    int rows = command.ExecuteNonQuery();
+                }
             }
             else
             {
-                // Code to increment player two's losses
+                player_two_losses++;
+                using (SqlCeCommand command = new SqlCeCommand("UPDATE [statistics] SET [wins] = @wins, [losses] = @losses" +
+                    " WHERE username='" + player_two_username + "'", connection))
+                {
+                    command.Parameters.AddWithValue("@wins", player_two_wins);
+                    command.Parameters.AddWithValue("@losses", player_two_losses);
+
+                    int rows = command.ExecuteNonQuery();
+                }
             }
         }
 

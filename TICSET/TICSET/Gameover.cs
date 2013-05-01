@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using gamePlay;
+using Database;
 
 namespace TICSET
 {
@@ -14,6 +15,9 @@ namespace TICSET
     {
         string p1_username = "";
         string p2_username = "";
+        
+        DatabaseHelper myHelper;
+
         public Gameover()
         {
             InitializeComponent();
@@ -21,18 +25,26 @@ namespace TICSET
 
         public Gameover(Player p1, Player p2, char who_won)
         {
+            InitializeComponent();
             p1_username = p1.getID();
             p2_username = p2.getID();
             if (who_won == 'x' || who_won == 'X')
             {
-                lbl_won.Text = p1_username + "Won!";
-                lbl_lost.Text = p2_username + "Lost!";
+                lbl_won.Text = p1_username + " Won!";
+                lbl_lost.Text = p2_username + " Lost!";
             }
             if (who_won == 'o' || who_won == 'O')
             {
-                lbl_won.Text = p2_username + "Won!";
-                lbl_lost.Text = p1_username + "Lost!";
+                lbl_won.Text = p2_username + " Won!";
+                lbl_lost.Text = p1_username + " Lost!";
             }
+
+            myHelper = new DatabaseHelper();
+            string[] leaderboard_string = myHelper.Leaderboard();
+            lbl_leaderboard_number.Text = leaderboard_string[0];
+            lbl_leaderboard_username.Text = leaderboard_string[1];
+            lbl_leaderboard_wins.Text = leaderboard_string[2];
+            lbl_leaderboard_losses.Text = leaderboard_string[3];
 
         }
 
